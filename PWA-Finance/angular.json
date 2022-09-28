@@ -6,13 +6,35 @@
     "PWA-Finance": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "fi",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -28,8 +50,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/theme/fi-theme.scss",
+              "src/styles.scss",
+              "src/assets/font/font-roboto.css",
+              "src/assets/font/icon.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/theme/"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -67,6 +97,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4300
+          },
           "configurations": {
             "production": {
               "browserTarget": "PWA-Finance:build:production"
@@ -96,8 +129,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/theme/fi-theme.scss",
+              "src/styles.scss",
+              "src/assets/font/font-roboto.css",
+              "src/assets/font/icon.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/theme/"
+              ]
+            },
             "scripts": []
           }
         }
