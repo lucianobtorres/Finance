@@ -1,0 +1,153 @@
+{
+  "configVersion": 1,
+  "timestamp": 1664399594015,
+  "index": "Finance/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "Finance/favicon.ico",
+        "Finance/index.html",
+        "Finance/main.994a3314ecc64cf1.js",
+        "Finance/manifest.webmanifest",
+        "Finance/polyfills.87fa1c2923afd228.js",
+        "Finance/runtime.5257be2ac6f645cf.js",
+        "Finance/styles.a4c32fd31bd37c0d.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "Finance/Roboto-Light.3d1bbede3dff569a.woff",
+        "Finance/Roboto-Light.86fc2559ff73eac5.woff2",
+        "Finance/Roboto-Medium.4fa4b1c02a877115.woff",
+        "Finance/Roboto-Medium.f8693cca22ae31bc.woff2",
+        "Finance/Roboto-Regular.4557104648f65fcc.woff",
+        "Finance/Roboto-Regular.4e7449338f3a9fee.woff2",
+        "Finance/assets/font/Roboto-Black.woff",
+        "Finance/assets/font/Roboto-Black.woff2",
+        "Finance/assets/font/Roboto-BlackItalic.woff",
+        "Finance/assets/font/Roboto-BlackItalic.woff2",
+        "Finance/assets/font/Roboto-Bold.woff",
+        "Finance/assets/font/Roboto-Bold.woff2",
+        "Finance/assets/font/Roboto-BoldItalic.woff",
+        "Finance/assets/font/Roboto-BoldItalic.woff2",
+        "Finance/assets/font/Roboto-Italic.woff",
+        "Finance/assets/font/Roboto-Italic.woff2",
+        "Finance/assets/font/Roboto-Light.woff",
+        "Finance/assets/font/Roboto-Light.woff2",
+        "Finance/assets/font/Roboto-LightItalic.woff",
+        "Finance/assets/font/Roboto-LightItalic.woff2",
+        "Finance/assets/font/Roboto-Medium.woff",
+        "Finance/assets/font/Roboto-Medium.woff2",
+        "Finance/assets/font/Roboto-MediumItalic.woff",
+        "Finance/assets/font/Roboto-MediumItalic.woff2",
+        "Finance/assets/font/Roboto-Regular.woff",
+        "Finance/assets/font/Roboto-Regular.woff2",
+        "Finance/assets/font/Roboto-Thin.woff",
+        "Finance/assets/font/Roboto-Thin.woff2",
+        "Finance/assets/font/Roboto-ThinItalic.woff",
+        "Finance/assets/font/Roboto-ThinItalic.woff2",
+        "Finance/assets/font/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2",
+        "Finance/assets/font/font-roboto.css",
+        "Finance/assets/font/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2",
+        "Finance/assets/font/icon.css",
+        "Finance/assets/icons/icon-128x128.png",
+        "Finance/assets/icons/icon-144x144.png",
+        "Finance/assets/icons/icon-152x152.png",
+        "Finance/assets/icons/icon-192x192.png",
+        "Finance/assets/icons/icon-384x384.png",
+        "Finance/assets/icons/icon-512x512.png",
+        "Finance/assets/icons/icon-72x72.png",
+        "Finance/assets/icons/icon-96x96.png",
+        "Finance/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.3a4cb006b229e5d7.woff2",
+        "Finance/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.8fdb895cfe88be90.woff2"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "Finance/Roboto-Light.3d1bbede3dff569a.woff": "42eb5fdef68306d937a8fba20dd8da1b0de2bafa",
+    "Finance/Roboto-Light.86fc2559ff73eac5.woff2": "8237523ff588300ff5d2da67a20bce60701a14b8",
+    "Finance/Roboto-Medium.4fa4b1c02a877115.woff": "3e38dce596d2b9ab706d7371a28613d618b32220",
+    "Finance/Roboto-Medium.f8693cca22ae31bc.woff2": "c78884cb32e7b020971ffae746fe21d90502bcae",
+    "Finance/Roboto-Regular.4557104648f65fcc.woff": "e9e77fc073e302b714e30698276fad6adaf179cd",
+    "Finance/Roboto-Regular.4e7449338f3a9fee.woff2": "90bbe308a02d7cda492e3beb1a6091809b8f35c8",
+    "Finance/assets/font/Roboto-Black.woff": "75fa02477e7c5648cf92b79e2ee27ddbf53241e5",
+    "Finance/assets/font/Roboto-Black.woff2": "2c4388751874f5aa482c964d7d07fbebe2fcc3b9",
+    "Finance/assets/font/Roboto-BlackItalic.woff": "a94e2ac6c01dff48983ad5a45326b488d014568d",
+    "Finance/assets/font/Roboto-BlackItalic.woff2": "22ddaea3aeccaba80f5058cc4def148a263fa10e",
+    "Finance/assets/font/Roboto-Bold.woff": "6fa3b472bb5a784436faa1ef5d2896d426968689",
+    "Finance/assets/font/Roboto-Bold.woff2": "168e9a9e4690ec3437a6a3087dd2f76fadc47888",
+    "Finance/assets/font/Roboto-BoldItalic.woff": "041c21d48572e23b3069b50aa1239c454fc1f1e8",
+    "Finance/assets/font/Roboto-BoldItalic.woff2": "709c4ea8ac9ead98f53b7795947b3437641fa9a3",
+    "Finance/assets/font/Roboto-Italic.woff": "f1e4d63048d37028a7a779d47b3b5c220e7e5558",
+    "Finance/assets/font/Roboto-Italic.woff2": "2dcf273169753746a927f335799330c875a78a9f",
+    "Finance/assets/font/Roboto-Light.woff": "42eb5fdef68306d937a8fba20dd8da1b0de2bafa",
+    "Finance/assets/font/Roboto-Light.woff2": "8237523ff588300ff5d2da67a20bce60701a14b8",
+    "Finance/assets/font/Roboto-LightItalic.woff": "9085bb8399a227412101f721a53abb575d18bc9a",
+    "Finance/assets/font/Roboto-LightItalic.woff2": "980289364d5e71e59be5d04e6dd1ce95d21ad283",
+    "Finance/assets/font/Roboto-Medium.woff": "3e38dce596d2b9ab706d7371a28613d618b32220",
+    "Finance/assets/font/Roboto-Medium.woff2": "c78884cb32e7b020971ffae746fe21d90502bcae",
+    "Finance/assets/font/Roboto-MediumItalic.woff": "aaf4b5778a88db53631dbc3a29be44a6b22d4c63",
+    "Finance/assets/font/Roboto-MediumItalic.woff2": "329297c95c57847baa029b9b607a16abd2ed3cef",
+    "Finance/assets/font/Roboto-Regular.woff": "e9e77fc073e302b714e30698276fad6adaf179cd",
+    "Finance/assets/font/Roboto-Regular.woff2": "90bbe308a02d7cda492e3beb1a6091809b8f35c8",
+    "Finance/assets/font/Roboto-Thin.woff": "6b98b783fdc56afb3065dfa7dc252f4daedb9284",
+    "Finance/assets/font/Roboto-Thin.woff2": "2d851a8c3522e2e0c1fd4c87e79404c6adb38aaf",
+    "Finance/assets/font/Roboto-ThinItalic.woff": "d437d17cf051e7181855ff87807f25a9a0922f4c",
+    "Finance/assets/font/Roboto-ThinItalic.woff2": "6d2f46c9734a132bb72156d58202f5004926fe1a",
+    "Finance/assets/font/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2": "a80466bc637c657f0dc739e0924b025034a92ea9",
+    "Finance/assets/font/font-roboto.css": "ad91463526d06346253c6536098c620a15fd90ae",
+    "Finance/assets/font/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2": "b83aec9cceb453c24574d43f1ef4fde2a40eea65",
+    "Finance/assets/font/icon.css": "6082a878c7a259149dd22416b83fd0e2df0331bc",
+    "Finance/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "Finance/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "Finance/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "Finance/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "Finance/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "Finance/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "Finance/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "Finance/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "Finance/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "Finance/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.3a4cb006b229e5d7.woff2": "a80466bc637c657f0dc739e0924b025034a92ea9",
+    "Finance/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.8fdb895cfe88be90.woff2": "b83aec9cceb453c24574d43f1ef4fde2a40eea65",
+    "Finance/index.html": "3c971f99fbc15fe189a8de5a6dc35247d6ca3096",
+    "Finance/main.994a3314ecc64cf1.js": "486a9392c13ef2b1b1fe258b690bc9004fb7fd25",
+    "Finance/manifest.webmanifest": "b3929632e7a9ffe2f042111bb423a6f743dfc279",
+    "Finance/polyfills.87fa1c2923afd228.js": "2b61fa1ccc6c317b6cb1792dc941094569da4957",
+    "Finance/runtime.5257be2ac6f645cf.js": "bb67a40b77ae4ea79f2d50cf183e5267b0f38a9f",
+    "Finance/styles.a4c32fd31bd37c0d.css": "de87b49da6451f5eacb0858e2027516d6c84540e"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
