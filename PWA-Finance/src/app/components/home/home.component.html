@@ -18,3 +18,18 @@
     </mat-list>
   </div>
 </div>
+
+<div *ngFor="let todoList of todoLists$ | async; trackBy: identifyList">
+  <fi-itemlist [todoList]="todoList"></fi-itemlist>
+</div>
+<label>
+  Add new list:
+  <input
+    autocomplete="off"
+    type="text"
+    id="name"
+    #name
+    [(ngModel)]="listName"
+  />
+</label>
+<button type="submit" (click)="addNewList()">Add new list</button>
