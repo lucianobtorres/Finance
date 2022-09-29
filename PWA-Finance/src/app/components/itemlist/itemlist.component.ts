@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { liveQuery } from 'dexie';
-import { db, TodoList } from 'src/app/db/finance-db';
+import { dbTodo, TodoList } from 'src/app/db/todo-db';
 
 @Component({
   selector: 'fi-itemlist',
@@ -15,7 +15,7 @@ export class ItemlistComponent {
   );
 
   async listTodoItems() {
-    return await db.todoItems
+    return await dbTodo.todoItems
       .where({
         todoListId: this.todoList.id,
       })
@@ -23,7 +23,7 @@ export class ItemlistComponent {
   }
 
   async addItem() {
-    await db.todoItems.add({
+    await dbTodo.todoItems.add({
       title: this.itemName,
       todoListId: this.todoList.id,
     });

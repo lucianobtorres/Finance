@@ -1,47 +1,30 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component } from '@angular/core';
 import { liveQuery } from 'dexie';
-import { db, TodoList } from 'src/app/db/finance-db';
-
-
-export class Todo {
-  desc!: string;
-}
+import { db, PlanoContas } from 'src/app/db/finance-db';
 
 @Component({
   selector: 'fi-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  todoLists$ = liveQuery(() => db.todoLists.toArray());
-  listName = 'My new list';
+  grupoContas$ = liveQuery(() => db.grupoContas.toArray());
+  planoContas$ = liveQuery(() => db.planoContas.toArray());
 
-  todo: Todo = new Todo();
-  todos: Todo[] = [];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  async addNewList() {
-    await db.todoLists.add({
-      title: this.listName,
+  siglaGrupo(planoConta: PlanoContas) : string {
+    let sigla = '';
+    this.grupoContas$.subscribe((grupo) => {
+      const grupoConta = grupo.find(x => x.id === planoConta.grupoContasId)
+      if (grupoConta) {
+        sigla = `${grupoConta.sigla}${planoConta.id}`;
+      }
     });
+
+    return sigla;
   }
 
-  identifyList(index: number, list: TodoList) {
+  planContasList(index: number, list: PlanoContas) {
     return `${list.id}${list.title}`;
   }
-
-  save(todo: Todo) {
-    this.todos.push(todo);
-    this.todo = new Todo();
-    this.todos = Object.assign([], this.todos);
-  }
-  delete(todo: Todo) {
-    this.todos.splice(this.todos.indexOf(todo), 1);
-  }
-
 }

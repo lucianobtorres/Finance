@@ -13,12 +13,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ItemlistComponent } from './components/itemlist/itemlist.component';
+import { TodoComponent } from './components/todo/todo.component';
+import { ConvertWithFunctionPipe } from './pipes/convert-with-function.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ItemlistComponent
+    ItemlistComponent,
+    TodoComponent,
+    ConvertWithFunctionPipe
   ],
   imports: [
     BrowserModule,
