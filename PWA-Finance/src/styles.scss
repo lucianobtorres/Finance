@@ -1,0 +1,6 @@
+@use 'mixins' as m;
+@use 'theme-variables' as *;
+
+body {
+  background-color: $color-background;
+}
