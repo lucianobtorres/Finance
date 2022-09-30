@@ -6,7 +6,7 @@
 $color-config: mat.get-color-config($fi-theme);
 $primary-color: mat.get-color-from-palette(map.get($color-config, "primary"));
 $accent-color: mat.get-color-from-palette(map.get($color-config, "accent"));
-$secondary-color: #f8c21a;
+$secondary-color: #FFBC0A;
 
 $color-background: #f8fafb;
 $color-background-default: #ffffff;

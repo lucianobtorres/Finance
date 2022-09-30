@@ -1,5 +1,197 @@
-<div *ngFor="let grupo of grupoContas$ | async">
-  <div *ngFor="let item of planoContas$ | async; trackBy: planContasList">
-    <p>  {{ item.id }} {{ item.title }} </p>
-  </div>
-</div>
+<mat-tab-group
+headerPosition="below"
+disableRipple>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div class="menu-tabs">
+        <mat-icon>currency_exchange</mat-icon>
+        <small>Lançamentos</small>
+      </div>
+    </ng-template>
+    <mat-card>
+
+      <mat-card-title>
+        <div class="menu-super">
+          {{ hoje | date:'MMMM' }}
+          <mat-icon>add</mat-icon>
+        </div>
+
+      </mat-card-title>
+      <mat-card-subtitle> {{ hoje | date:'yyyy' }} </mat-card-subtitle>
+
+      <mat-card-content>
+        <div class="timeline-dias">
+          <div *ngFor="let dia of dias" class="timeline-dia"
+            [ngClass]="{'selecao-dia-hoje': dia.isHoje}">
+            <small class="timeline-semana">
+              {{ dia.diaDaSemana }}
+            </small>
+            <small class="mat-small timeline-dia-numero">
+              {{ dia.dia }}
+            </small>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content class="categoria-content">
+
+        <div class="categorias">
+        <mat-expansion-panel class="mat-elevation-z0" hideToggle>
+          <mat-expansion-panel-header class="mat-elevation-z0 categoria-container">
+
+            <div class="item-categoria"><div class="categoria">
+              <mat-icon color="primary">attach_money</mat-icon>
+              <h3>Receitas</h3>
+            </div>
+            <div class="soma">
+              <div>
+                <small>R$</small>
+                <span>100,00</span>
+              </div>
+              <small>hoje às 19:05</small>
+            </div></div>
+
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <div class="item-financeiro">
+            <span>1-set</span>
+            <small>Serviços Financeiros</small>
+            <small>Tarifas bancárias</small>
+            <small>Refeição fora de casa</small>
+            <small>R$</small>
+            <span>5,83</span>
+            <span>2-set</span>
+            <small>Lazer</small>
+            <small>Viagens</small>
+            <small>Hospedagem Mont Blanc</small>
+            <small>R$</small>
+            <span>796,00</span>
+            <span>2-set</span>
+            <small>Alimentação</small>
+            <small>Supermercado</small>
+            <small>Guanabara</small>
+            <small>R$</small>
+            <span>766,81</span>
+          </div>
+
+        </mat-expansion-panel>
+
+          <mat-card class="mat-elevation-z0 categoria-container">
+
+            <div class="item-categoria"><div class="categoria">
+              <mat-icon color="primary">restaurant</mat-icon>
+              <h3>Alimentação</h3>
+            </div>
+            <div class="soma">
+              <div>
+                <small>R$</small>
+                <span>100,00</span>
+              </div>
+              <small>hoje às 19:05</small>
+            </div></div>
+
+          </mat-card>
+
+          <mat-card class="mat-elevation-z0 categoria-container">
+
+            <div class="item-categoria"><div class="categoria">
+              <mat-icon color="primary">home_work</mat-icon>
+              <h3>Moradia</h3>
+            </div>
+            <div class="soma">
+              <div>
+                <small>R$</small>
+                <span>100,00</span>
+              </div>
+              <small>hoje às 19:05</small>
+            </div></div>
+
+          </mat-card>
+
+          <mat-card class="mat-elevation-z0 categoria-container">
+
+            <div class="item-categoria"><div class="categoria">
+              <mat-icon color="primary">commute</mat-icon>
+              <h3>Transporte</h3>
+            </div>
+            <div class="soma">
+              <div>
+                <small>R$</small>
+                <span>100,00</span>
+              </div>
+              <small>hoje às 19:05</small>
+            </div></div>
+
+          </mat-card>
+
+          <mat-card class="mat-elevation-z0 categoria-container">
+
+            <div class="item-categoria"><div class="categoria">
+              <mat-icon color="primary">sports_soccer</mat-icon>
+              <h3>Lazer</h3>
+            </div>
+            <div class="soma">
+              <div>
+                <small>R$</small>
+                <span>100,00</span>
+              </div>
+              <small>hoje às 19:05</small>
+            </div></div>
+
+          </mat-card>
+
+          <mat-card class="mat-elevation-z0 categoria-container">
+
+            <div class="item-categoria"><div class="categoria">
+              <mat-icon color="primary">receipt</mat-icon>
+              <h3>Serviços Financeiros</h3>
+            </div>
+            <div class="soma">
+              <div>
+                <small>R$</small>
+                <span>100,00</span>
+              </div>
+              <small>hoje às 19:05</small>
+            </div></div>
+
+          </mat-card>
+
+          <mat-card class="mat-elevation-z0 categoria-container">
+
+            <div class="item-categoria"><div class="categoria">
+              <mat-icon color="primary">receipt</mat-icon>
+              <h3>Serviços Financeiros</h3>
+            </div>
+            <div class="soma">
+              <div>
+                <small>R$</small>
+                <span>100,00</span>
+              </div>
+              <small>hoje às 19:05</small>
+            </div></div>
+
+          </mat-card>
+
+      </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div class="menu-tabs">
+        <mat-icon>trending_up</mat-icon>
+        <small>Gráficos</small>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div class="menu-tabs">
+        <mat-icon>settings</mat-icon>
+        <small>Configurações</small>
+      </div>
+    </ng-template>
+  </mat-tab>
+
+</mat-tab-group>

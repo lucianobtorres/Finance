@@ -19,10 +19,20 @@ export interface MeioMovimentacao {
   entrada: boolean;
 }
 
+export interface Lancamentos {
+  id?: number;
+  planoContasId: number | undefined;
+  data: Date;
+  desc: string;
+  valor: number;
+  meioMovimentacaoId: number | undefined;
+}
+
 export class FinanceDB extends Dexie {
   grupoContas!: Table<GrupoContas, number>;
   planoContas!: Table<PlanoContas, number>;
   meioMovimentacao!: Table<MeioMovimentacao, number>;
+  lancamentos!: Table<Lancamentos, number>;
 
   constructor() {
     super('Finance-DB');
@@ -37,7 +47,7 @@ export class FinanceDB extends Dexie {
   }
 
   async populate() {
-    const keys = await db.grupoContas.bulkAdd([
+    const keysGrupo = await db.grupoContas.bulkAdd([
       { title: 'Receita', sigla: 'R' },
       { title: 'Alimentação', sigla: 'A' },
       { title: 'Moradia', sigla: 'M' },
@@ -48,7 +58,7 @@ export class FinanceDB extends Dexie {
 
     let ids: number = 1;
 
-    await db.planoContas.bulkAdd([
+    const keysPlanContas = await db.planoContas.bulkAdd([
       { grupoContasId: ids, title: 'Salário  / Adiantamento /  Renda Autônomo' },
       { grupoContasId: ids, title: 'Férias' },
       { grupoContasId: ids, title: '13º salário' },
@@ -103,9 +113,9 @@ export class FinanceDB extends Dexie {
       { grupoContasId: ids, title: 'Saque' },
       { grupoContasId: ids++, title: 'Pagamento Parcela' },
 
-    ]);
+    ] , { allKeys: true });
 
-    await db.meioMovimentacao.bulkAdd([
+    const keysMeioMov = await db.meioMovimentacao.bulkAdd([
       { sigla: 'CC', title: 'Cartão de Crédito', entrada: false },
       { sigla: 'PC', title: 'Parcelamento no Cartão de crédit', entrada: false },
       { sigla: 'CH', title: 'Cheque', entrada: false },
@@ -116,7 +126,15 @@ export class FinanceDB extends Dexie {
       { sigla: 'SQ', title: 'Saque', entrada: false },
       { sigla: 'IV', title: 'Investimento', entrada: false },
 
+    ] , { allKeys: true });
+
+    await db.lancamentos.bulkAdd([
+      { planoContasId: 43, data: new Date(2022, 8, 1), desc: 'iof', valor: 5.83, meioMovimentacaoId: 4 },
+      { planoContasId: 10, data: new Date(2022, 8, 2), desc: 'Lanche', valor: 81, meioMovimentacaoId: 4 },
+      { planoContasId: 37, data: new Date(2022, 8, 2), desc: 'Hospedagem Mont Blanc', valor: 796, meioMovimentacaoId: 4 },
+      { planoContasId: 7, data: new Date(2022, 8, 5), desc: 'Guanabara', valor: 766.81, meioMovimentacaoId: 4 }
     ]);
+
   }
 }
 

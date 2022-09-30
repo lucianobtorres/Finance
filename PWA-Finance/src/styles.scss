@@ -4,3 +4,34 @@
 body {
   background-color: $color-background;
 }
+
+mat-tab-group {
+  min-height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+
+mat-tab-group mat-tab-header {
+  .mat-tab-label {
+    min-width: 0;
+  }
+
+  .mat-tab-label-active {
+    color: $primary-color;
+  }
+}
+
+.mat-tab-labels {
+  justify-content: space-between;
+  margin-block: 16px;
+}
+
+.mat-tab-body-wrapper {
+  height: 100%;
+}
+
+div .mat-tab-body-content,
+mat-tab-body {
+  overflow: hidden;
+}

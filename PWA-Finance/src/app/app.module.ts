@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,15 @@ import { environment } from '../environments/environment';
 import { ItemlistComponent } from './components/itemlist/itemlist.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { ConvertWithFunctionPipe } from './pipes/convert-with-function.pipe';
+import { PlanoContasComponent } from './components/plano-contas/plano-contas.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { LancamentoGrupoContasComponent } from './components/grupo-contas/lancamento-grupo-contas.component';
+
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -22,7 +31,9 @@ import { ConvertWithFunctionPipe } from './pipes/convert-with-function.pipe';
     HomeComponent,
     ItemlistComponent,
     TodoComponent,
-    ConvertWithFunctionPipe
+    ConvertWithFunctionPipe,
+    PlanoContasComponent,
+    LancamentoGrupoContasComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +51,16 @@ import { ConvertWithFunctionPipe } from './pipes/convert-with-function.pipe';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' }
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

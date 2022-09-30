@@ -1,30 +1,45 @@
-import { Component } from '@angular/core';
-import { liveQuery } from 'dexie';
-import { db, PlanoContas } from 'src/app/db/finance-db';
+import { DatePipe, WeekDay } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { add, addDays, subDays, subMinutes } from 'date-fns';
+
+const QTD_DIAS = 3;
 
 @Component({
   selector: 'fi-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  public hoje = new Date();
+  public inicio = subDays(this.hoje, QTD_DIAS);
+  public final = addDays(this.hoje, QTD_DIAS);
 
-  grupoContas$ = liveQuery(() => db.grupoContas.toArray());
-  planoContas$ = liveQuery(() => db.planoContas.toArray());
+  public dias: { dia: number, diaDaSemana: string, isHoje: boolean }[] = [];
 
-  siglaGrupo(planoConta: PlanoContas) : string {
-    let sigla = '';
-    this.grupoContas$.subscribe((grupo) => {
-      const grupoConta = grupo.find(x => x.id === planoConta.grupoContasId)
-      if (grupoConta) {
-        sigla = `${grupoConta.sigla}${planoConta.id}`;
-      }
-    });
-
-    return sigla;
+  constructor(private datepipe: DatePipe) {
   }
 
-  planContasList(index: number, list: PlanoContas) {
-    return `${list.id}${list.title}`;
+  ngOnInit(): void {
+
+    let cursor = subDays(this.hoje, QTD_DIAS);
+    const final = addDays(this.hoje, QTD_DIAS);
+
+    do {
+      cursor = this.createRange(cursor);
+    } while (cursor.toISOString() != final.toISOString())
+    this.createRange(addDays(cursor, 1));
+
+  }
+
+  private createRange(cursor: Date) {
+    const dia = cursor.getDate();
+    const diaDaSemana = this.datepipe.transform(cursor, 'EEE')?.toUpperCase().substring(0, 3) ?? '';
+    const isHoje = dia == this.hoje.getDate();
+
+    this.dias.push({ dia, diaDaSemana, isHoje });
+
+    cursor = addDays(cursor, 1);
+    console.log(cursor);
+    return cursor;
   }
 }
