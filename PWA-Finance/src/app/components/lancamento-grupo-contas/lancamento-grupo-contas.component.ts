@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { liveQuery } from 'dexie';
-import { Observable } from 'rxjs';
-import { db, Lancamentos } from 'src/app/db/finance-db';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { liveQuery, Observable } from 'dexie';
+import { db, GrupoContas, Lancamento, MeioMovimentacao, PlanoContas } from 'src/app/db/finance-db';
 
 @Component({
   selector: 'fi-lancamento-grupo-contas',
@@ -10,14 +10,25 @@ import { db, Lancamentos } from 'src/app/db/finance-db';
 })
 export class LancamentoGrupoContasComponent implements OnInit {
 
-  public lancamentos$: Observable<Lancamentos[]>;
+  @Input() lancamento!: Lancamento;
+  @Input() grupoConta!: GrupoContas;
 
-  constructor() {
-    this.lancamentos$ = new Observable<Lancamentos[]>();
-  }
+  @Input() lancamentos = liveQuery(
+    () => this.listTodoItems()
+  );
+
 
   ngOnInit(): void {
-    this.lancamentos$ = liveQuery(() => db.lancamentos.toArray());
+  }
+
+  async listTodoItems() {
+    const planosContas = await liveQuery(() => db.planoContas.where({grupoContasId: this.grupoConta.id}));
+
+    return await db.lancamentos
+      .where({
+        todoListId: planosContas,
+      })
+      .toArray();
   }
 
   // siglaGrupo(planoConta: PlanoContas) : string {

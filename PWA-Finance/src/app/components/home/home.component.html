@@ -36,6 +36,33 @@ disableRipple>
       <mat-card-content class="categoria-content">
 
         <div class="categorias">
+
+          <mat-expansion-panel
+          *ngFor="let grupoConta of gruposContas$ | async"
+          class="mat-elevation-z0"
+          hideToggle>
+          <mat-expansion-panel-header class="mat-elevation-z0 categoria-container">
+            <div class="item-categoria">
+              <div class="categoria">
+                <mat-icon color="primary">attach_money</mat-icon>
+                <h3>{{ grupoConta.title }}</h3>
+              </div>
+              <div class="soma">
+                <div>
+                  <small>R$</small>
+                  <span>100,00</span>
+                </div>
+                <small>hoje às 19:05</small>
+              </div>
+            </div>
+          </mat-expansion-panel-header>
+
+          <fi-grupo-contas [grupoConta]="grupoConta">
+          </fi-grupo-contas>
+        </mat-expansion-panel>
+
+          <fi-grupo-contas></fi-grupo-contas>
+
         <mat-expansion-panel class="mat-elevation-z0" hideToggle>
           <mat-expansion-panel-header class="mat-elevation-z0 categoria-container">
 
@@ -54,24 +81,10 @@ disableRipple>
           </mat-expansion-panel-header>
           <mat-divider></mat-divider>
           <div class="item-financeiro">
-            <span>1-set</span>
-            <small>Serviços Financeiros</small>
-            <small>Tarifas bancárias</small>
-            <small>Refeição fora de casa</small>
-            <small>R$</small>
-            <span>5,83</span>
-            <span>2-set</span>
-            <small>Lazer</small>
-            <small>Viagens</small>
-            <small>Hospedagem Mont Blanc</small>
-            <small>R$</small>
-            <span>796,00</span>
-            <span>2-set</span>
-            <small>Alimentação</small>
-            <small>Supermercado</small>
-            <small>Guanabara</small>
-            <small>R$</small>
-            <span>766,81</span>
+            <fi-lancamento-grupo-contas
+              *ngFor="let lancamento of lancamentos$ | async"
+              [lancamento]="lancamento">
+            </fi-lancamento-grupo-contas>
           </div>
 
         </mat-expansion-panel>

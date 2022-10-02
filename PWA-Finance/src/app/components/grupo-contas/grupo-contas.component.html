@@ -1,0 +1,7 @@
+    <div class="item-financeiro">
+      <fi-lancamento-grupo-contas
+        *ngFor="let lancamento of lancamentos$ | async"
+        [lancamento]="lancamento"
+        [grupoConta]="grupoConta">
+      </fi-lancamento-grupo-contas>
+    </div>

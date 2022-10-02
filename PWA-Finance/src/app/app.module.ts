@@ -20,7 +20,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { LancamentoGrupoContasComponent } from './components/grupo-contas/lancamento-grupo-contas.component';
+import { LancamentoGrupoContasComponent } from './components/lancamento-grupo-contas/lancamento-grupo-contas.component';
+import { GrupoContasComponent } from './components/grupo-contas/grupo-contas.component';
 
 
 registerLocaleData(localePt);
@@ -33,7 +34,8 @@ registerLocaleData(localePt);
     TodoComponent,
     ConvertWithFunctionPipe,
     PlanoContasComponent,
-    LancamentoGrupoContasComponent
+    GrupoContasComponent,
+    LancamentoGrupoContasComponent,
   ],
   imports: [
     BrowserModule,

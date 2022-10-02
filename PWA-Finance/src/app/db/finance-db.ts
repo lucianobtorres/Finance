@@ -19,7 +19,7 @@ export interface MeioMovimentacao {
   entrada: boolean;
 }
 
-export interface Lancamentos {
+export interface Lancamento {
   id?: number;
   planoContasId: number | undefined;
   data: Date;
@@ -32,7 +32,7 @@ export class FinanceDB extends Dexie {
   grupoContas!: Table<GrupoContas, number>;
   planoContas!: Table<PlanoContas, number>;
   meioMovimentacao!: Table<MeioMovimentacao, number>;
-  lancamentos!: Table<Lancamentos, number>;
+  lancamentos!: Table<Lancamento, number>;
 
   constructor() {
     super('Finance-DB');
@@ -41,6 +41,7 @@ export class FinanceDB extends Dexie {
       grupoContas: '++id',
       planoContas: '++id, grupoContasId',
       meioMovimentacao: '++id',
+      lancamentos: '++id, planoContasId, meioMovimentacaoId',
     });
 
     this.on('populate', () => this.populate());
