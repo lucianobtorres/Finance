@@ -1,32 +1,5 @@
 import Dexie, { Table } from 'dexie';
-
-export interface GrupoContas {
-  id?: number;
-  sigla: string;
-  title: string;
-}
-
-export interface PlanoContas {
-  id?: number;
-  grupoContasId: number | undefined;
-  title: string;
-}
-
-export interface MeioMovimentacao {
-  id?: number;
-  sigla: string;
-  title: string;
-  entrada: boolean;
-}
-
-export interface Lancamento {
-  id?: number;
-  planoContasId: number | undefined;
-  data: Date;
-  desc: string;
-  valor: number;
-  meioMovimentacaoId: number | undefined;
-}
+import { GrupoContas, PlanoContas, MeioMovimentacao, Lancamento } from '../models/interfaces';
 
 export class FinanceDB extends Dexie {
   grupoContas!: Table<GrupoContas, number>;

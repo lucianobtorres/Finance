@@ -1,6 +1,7 @@
 <mat-tab-group
-headerPosition="below"
-disableRipple>
+  headerPosition="below"
+  disableRipple>
+
   <mat-tab>
     <ng-template mat-tab-label>
       <div class="menu-tabs">
@@ -10,183 +11,9 @@ disableRipple>
     </ng-template>
     <mat-card>
 
-      <mat-card-title>
-        <div class="menu-super">
-          {{ hoje | date:'MMMM' }}
-          <mat-icon>add</mat-icon>
-        </div>
+      <fi-header></fi-header>
+      <fi-lancamentos></fi-lancamentos>
 
-      </mat-card-title>
-      <mat-card-subtitle> {{ hoje | date:'yyyy' }} </mat-card-subtitle>
-
-      <mat-card-content>
-        <div class="timeline-dias">
-          <div *ngFor="let dia of dias" class="timeline-dia"
-            [ngClass]="{'selecao-dia-hoje': dia.isHoje}">
-            <small class="timeline-semana">
-              {{ dia.diaDaSemana }}
-            </small>
-            <small class="mat-small timeline-dia-numero">
-              {{ dia.dia }}
-            </small>
-          </div>
-        </div>
-      </mat-card-content>
-
-      <mat-card-content class="categoria-content">
-
-        <div class="categorias">
-
-          <mat-expansion-panel
-          *ngFor="let grupoConta of gruposContas$ | async"
-          class="mat-elevation-z0"
-          hideToggle>
-          <mat-expansion-panel-header class="mat-elevation-z0 categoria-container">
-            <div class="item-categoria">
-              <div class="categoria">
-                <mat-icon color="primary">attach_money</mat-icon>
-                <h3>{{ grupoConta.title }}</h3>
-              </div>
-              <div class="soma">
-                <div>
-                  <small>R$</small>
-                  <span>100,00</span>
-                </div>
-                <small>hoje às 19:05</small>
-              </div>
-            </div>
-          </mat-expansion-panel-header>
-
-          <fi-grupo-contas [grupoConta]="grupoConta">
-          </fi-grupo-contas>
-        </mat-expansion-panel>
-
-          <fi-grupo-contas></fi-grupo-contas>
-
-        <mat-expansion-panel class="mat-elevation-z0" hideToggle>
-          <mat-expansion-panel-header class="mat-elevation-z0 categoria-container">
-
-            <div class="item-categoria"><div class="categoria">
-              <mat-icon color="primary">attach_money</mat-icon>
-              <h3>Receitas</h3>
-            </div>
-            <div class="soma">
-              <div>
-                <small>R$</small>
-                <span>100,00</span>
-              </div>
-              <small>hoje às 19:05</small>
-            </div></div>
-
-          </mat-expansion-panel-header>
-          <mat-divider></mat-divider>
-          <div class="item-financeiro">
-            <fi-lancamento-grupo-contas
-              *ngFor="let lancamento of lancamentos$ | async"
-              [lancamento]="lancamento">
-            </fi-lancamento-grupo-contas>
-          </div>
-
-        </mat-expansion-panel>
-
-          <mat-card class="mat-elevation-z0 categoria-container">
-
-            <div class="item-categoria"><div class="categoria">
-              <mat-icon color="primary">restaurant</mat-icon>
-              <h3>Alimentação</h3>
-            </div>
-            <div class="soma">
-              <div>
-                <small>R$</small>
-                <span>100,00</span>
-              </div>
-              <small>hoje às 19:05</small>
-            </div></div>
-
-          </mat-card>
-
-          <mat-card class="mat-elevation-z0 categoria-container">
-
-            <div class="item-categoria"><div class="categoria">
-              <mat-icon color="primary">home_work</mat-icon>
-              <h3>Moradia</h3>
-            </div>
-            <div class="soma">
-              <div>
-                <small>R$</small>
-                <span>100,00</span>
-              </div>
-              <small>hoje às 19:05</small>
-            </div></div>
-
-          </mat-card>
-
-          <mat-card class="mat-elevation-z0 categoria-container">
-
-            <div class="item-categoria"><div class="categoria">
-              <mat-icon color="primary">commute</mat-icon>
-              <h3>Transporte</h3>
-            </div>
-            <div class="soma">
-              <div>
-                <small>R$</small>
-                <span>100,00</span>
-              </div>
-              <small>hoje às 19:05</small>
-            </div></div>
-
-          </mat-card>
-
-          <mat-card class="mat-elevation-z0 categoria-container">
-
-            <div class="item-categoria"><div class="categoria">
-              <mat-icon color="primary">sports_soccer</mat-icon>
-              <h3>Lazer</h3>
-            </div>
-            <div class="soma">
-              <div>
-                <small>R$</small>
-                <span>100,00</span>
-              </div>
-              <small>hoje às 19:05</small>
-            </div></div>
-
-          </mat-card>
-
-          <mat-card class="mat-elevation-z0 categoria-container">
-
-            <div class="item-categoria"><div class="categoria">
-              <mat-icon color="primary">receipt</mat-icon>
-              <h3>Serviços Financeiros</h3>
-            </div>
-            <div class="soma">
-              <div>
-                <small>R$</small>
-                <span>100,00</span>
-              </div>
-              <small>hoje às 19:05</small>
-            </div></div>
-
-          </mat-card>
-
-          <mat-card class="mat-elevation-z0 categoria-container">
-
-            <div class="item-categoria"><div class="categoria">
-              <mat-icon color="primary">receipt</mat-icon>
-              <h3>Serviços Financeiros</h3>
-            </div>
-            <div class="soma">
-              <div>
-                <small>R$</small>
-                <span>100,00</span>
-              </div>
-              <small>hoje às 19:05</small>
-            </div></div>
-
-          </mat-card>
-
-      </div>
-      </mat-card-content>
     </mat-card>
   </mat-tab>
 
@@ -197,7 +24,9 @@ disableRipple>
         <small>Gráficos</small>
       </div>
     </ng-template>
+
   </mat-tab>
+
   <mat-tab>
     <ng-template mat-tab-label>
       <div class="menu-tabs">
@@ -205,6 +34,6 @@ disableRipple>
         <small>Configurações</small>
       </div>
     </ng-template>
-  </mat-tab>
 
+  </mat-tab>
 </mat-tab-group>

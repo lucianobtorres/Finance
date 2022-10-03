@@ -12,16 +12,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ItemlistComponent } from './components/itemlist/itemlist.component';
-import { TodoComponent } from './components/todo/todo.component';
 import { ConvertWithFunctionPipe } from './pipes/convert-with-function.pipe';
-import { PlanoContasComponent } from './components/plano-contas/plano-contas.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LancamentoGrupoContasComponent } from './components/lancamento-grupo-contas/lancamento-grupo-contas.component';
-import { GrupoContasComponent } from './components/grupo-contas/grupo-contas.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LancamentosComponent } from './components/lancamentos/lancamentos.component';
+import { ItemGrupoLancamentoComponent } from './components/item-grupo-lancamento/item-grupo-lancamento.component';
 
 
 registerLocaleData(localePt);
@@ -30,12 +29,11 @@ registerLocaleData(localePt);
   declarations: [
     AppComponent,
     HomeComponent,
-    ItemlistComponent,
-    TodoComponent,
     ConvertWithFunctionPipe,
-    PlanoContasComponent,
-    GrupoContasComponent,
     LancamentoGrupoContasComponent,
+    HeaderComponent,
+    LancamentosComponent,
+    ItemGrupoLancamentoComponent,
   ],
   imports: [
     BrowserModule,

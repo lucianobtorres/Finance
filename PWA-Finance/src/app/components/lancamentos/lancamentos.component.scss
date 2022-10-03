@@ -1,0 +1,10 @@
+.categorias {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoria-content {
+  overflow: auto;
+  height: 85%;
+}
