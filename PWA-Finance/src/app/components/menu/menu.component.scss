@@ -1,7 +1,13 @@
 @use "theme-variables" as *;
-.container-button {
-  margin-top: 10px;
+
+.tool-bar {
+  height: auto;
 }
+
+.container-button {
+  margin-top: 2px;
+}
+
 footer {
   margin-top: auto;
   position: fixed;
