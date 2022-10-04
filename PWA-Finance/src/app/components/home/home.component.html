@@ -1,39 +1,9 @@
-<mat-tab-group
-  headerPosition="below"
-  disableRipple>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <div class="menu-tabs">
-        <mat-icon>currency_exchange</mat-icon>
-        <small>Lançamentos</small>
-      </div>
-    </ng-template>
-    <mat-card>
-
-      <fi-header></fi-header>
-      <fi-lancamentos></fi-lancamentos>
-
-    </mat-card>
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <div class="menu-tabs">
-        <mat-icon>trending_up</mat-icon>
-        <small>Gráficos</small>
-      </div>
-    </ng-template>
-
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <div class="menu-tabs">
-        <mat-icon>settings</mat-icon>
-        <small>Configurações</small>
-      </div>
-    </ng-template>
-
-  </mat-tab>
-</mat-tab-group>
+<div>
+<mat-card class="mat-elevation-z0">
+    <mat-card-content>
+    <fi-header></fi-header>
+    <fi-time-line></fi-time-line>
+    <fi-lancamentos></fi-lancamentos>
+  </mat-card-content>
+</mat-card>
+</div>

@@ -2,13 +2,23 @@
 
 mat-card {
   box-sizing: border-box;
-  height: 100%;
+  height: calc(100vh - 64px);
   overflow: hidden;
 }
 
 mat-card-title {
   text-transform: capitalize;
   color: $primary-color;
+}
+
+mat-card-content{
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 .menu-tabs {

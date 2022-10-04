@@ -1,4 +1,4 @@
-import { Component, VERSION  } from '@angular/core';
+import { Component  } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,18 @@ import { Component, VERSION  } from '@angular/core';
 })
 export class AppComponent {
   title = 'Finance';
+  public navLinks = [
+    {
+      location: 'home',
+      label: 'Lancamentos',
+      icon: 'currency_exchange'
+    },{
+      location: 'graficos',
+      label: 'Gráficos',
+      icon: 'trending_up'
+    },{
+      location: 'configuracoes',
+      label: 'Configurações',
+      icon: 'settings'
+    }]
 }

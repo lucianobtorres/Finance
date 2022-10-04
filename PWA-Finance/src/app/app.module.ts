@@ -21,6 +21,9 @@ import { LancamentoGrupoContasComponent } from './components/lancamento-grupo-co
 import { HeaderComponent } from './components/header/header.component';
 import { LancamentosComponent } from './components/lancamentos/lancamentos.component';
 import { ItemGrupoLancamentoComponent } from './components/item-grupo-lancamento/item-grupo-lancamento.component';
+import { TimeLineComponent } from './components/time-line/time-line.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 registerLocaleData(localePt);
@@ -34,6 +37,8 @@ registerLocaleData(localePt);
     HeaderComponent,
     LancamentosComponent,
     ItemGrupoLancamentoComponent,
+    TimeLineComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
