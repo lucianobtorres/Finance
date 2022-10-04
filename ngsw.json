@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1664695164851,
+  "timestamp": 1664886166499,
   "index": "Finance/index.html",
   "assetGroups": [
     {
@@ -11,13 +11,14 @@
         "ignoreVary": true
       },
       "urls": [
+        "Finance/926.01b2cc81d95f0044.js",
         "Finance/favicon.ico",
         "Finance/index.html",
-        "Finance/main.8b0617ea81a6a71b.js",
+        "Finance/main.a865b2bfdfd4c252.js",
         "Finance/manifest.webmanifest",
-        "Finance/polyfills.87fa1c2923afd228.js",
-        "Finance/runtime.5257be2ac6f645cf.js",
-        "Finance/styles.cce7f99448f2242e.css"
+        "Finance/polyfills.2149575af5dd0bd9.js",
+        "Finance/runtime.c4d17b705c6c4591.js",
+        "Finance/styles.1b547996bfa7e208.css"
       ],
       "patterns": []
     },
@@ -79,6 +80,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "Finance/926.01b2cc81d95f0044.js": "1e909b52f42fd304919c40b39178bd05e38625af",
     "Finance/Roboto-Light.3d1bbede3dff569a.woff": "42eb5fdef68306d937a8fba20dd8da1b0de2bafa",
     "Finance/Roboto-Light.86fc2559ff73eac5.woff2": "8237523ff588300ff5d2da67a20bce60701a14b8",
     "Finance/Roboto-Medium.4fa4b1c02a877115.woff": "3e38dce596d2b9ab706d7371a28613d618b32220",
@@ -124,12 +126,12 @@
     "Finance/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "Finance/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.3a4cb006b229e5d7.woff2": "a80466bc637c657f0dc739e0924b025034a92ea9",
     "Finance/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.8fdb895cfe88be90.woff2": "b83aec9cceb453c24574d43f1ef4fde2a40eea65",
-    "Finance/index.html": "681f85d2ac74691cf944e748922b246dcfdafb3e",
-    "Finance/main.8b0617ea81a6a71b.js": "049b136a72413ec63550f64f8079a3e9beeb09e0",
-    "Finance/manifest.webmanifest": "17f25c1020d40a1b1761e12d2b19d2c77687b95e",
-    "Finance/polyfills.87fa1c2923afd228.js": "2b61fa1ccc6c317b6cb1792dc941094569da4957",
-    "Finance/runtime.5257be2ac6f645cf.js": "bb67a40b77ae4ea79f2d50cf183e5267b0f38a9f",
-    "Finance/styles.cce7f99448f2242e.css": "fe7cf18668cc562f7b6777b13faaf4a60eb887de"
+    "Finance/index.html": "89c0ea2f04a1e3de0c26926f000eaae3c7a4a812",
+    "Finance/main.a865b2bfdfd4c252.js": "8e9516ccfafa8ea7f9614ecee87649acadfc9125",
+    "Finance/manifest.webmanifest": "489263a2f412a678c61e98ca40dadeca2f311851",
+    "Finance/polyfills.2149575af5dd0bd9.js": "6cddff5a65c46fa53cd8494f6515ceaeb6baa866",
+    "Finance/runtime.c4d17b705c6c4591.js": "76583a8bf6f8e8655e8602552f7e181a7ca21b47",
+    "Finance/styles.1b547996bfa7e208.css": "0ea19122e6bdb94864338e3266d81e4029678c86"
   },
   "navigationUrls": [
     {
