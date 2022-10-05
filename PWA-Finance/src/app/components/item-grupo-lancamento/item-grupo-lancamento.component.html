@@ -14,7 +14,7 @@
       </div>
     </div>
   </mat-expansion-panel-header>
-  <div class="item-financeiro" *ngIf="panel.expanded">
+  <div class="itens-financeiros" *ngIf="panel.expanded">
     <ng-container *ngFor="let plan of itemGrupo.planosContas">
       <span>{{ plan.lancamentosGrupo.data | date:'dd-MMM'}}</span>
       <small>{{ plan.planoConta.title}}</small>

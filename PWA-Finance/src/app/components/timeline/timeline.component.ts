@@ -6,10 +6,10 @@ const QTD_DIAS = 3;
 
 @Component({
   selector: 'fi-time-line',
-  templateUrl: './time-line.component.html',
-  styleUrls: ['./time-line.component.scss']
+  templateUrl: './timeline.component.html',
+  styleUrls: ['./timeline.component.scss']
 })
-export class TimeLineComponent implements OnInit {
+export class TimelineComponent implements OnInit {
 
   public hoje = new Date();
   public inicio = subDays(this.hoje, QTD_DIAS);

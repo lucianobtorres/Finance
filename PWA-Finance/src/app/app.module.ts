@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { MaterialModule } from './module/material.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,14 +17,12 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { LancamentoGrupoContasComponent } from './components/lancamento-grupo-contas/lancamento-grupo-contas.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LancamentosComponent } from './components/lancamentos/lancamentos.component';
 import { ItemGrupoLancamentoComponent } from './components/item-grupo-lancamento/item-grupo-lancamento.component';
-import { TimeLineComponent } from './components/time-line/time-line.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AddLancamentoComponent } from './components/add-lancamento/add-lancamento.component';
-import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 
 registerLocaleData(localePt);
@@ -34,14 +32,12 @@ registerLocaleData(localePt);
     AppComponent,
     HomeComponent,
     ConvertWithFunctionPipe,
-    LancamentoGrupoContasComponent,
     HeaderComponent,
     LancamentosComponent,
     ItemGrupoLancamentoComponent,
-    TimeLineComponent,
+    TimelineComponent,
     MenuComponent,
     AddLancamentoComponent,
-    DatePickerComponent,
   ],
   imports: [
     BrowserModule,
