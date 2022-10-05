@@ -1,5 +1,6 @@
 @use 'mixins' as m;
 @use 'theme-variables' as *;
+@use '@angular/material' as mat;
 
 body {
   background-color: $color-background;
@@ -23,4 +24,8 @@ body {
   background: $primary-color;
   outline: 2px #f8fafb solid;
   background-clip: padding-box;
+}
+
+.primary-color {
+  color: $primary-color;
 }

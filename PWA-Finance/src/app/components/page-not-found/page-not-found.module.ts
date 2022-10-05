@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { PageNotFoundRoutingModule } from './page-not-found-routing.module';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { PageNotFoundRoutingModule } from './page-not-found-routing.module';
   ],
   imports: [
     CommonModule,
+    MatCardModule,
     PageNotFoundRoutingModule
   ]
 })
