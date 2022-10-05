@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1664944777810,
+  "timestamp": 1665009047375,
   "index": "Finance/index.html",
   "assetGroups": [
     {
@@ -11,14 +11,14 @@
         "ignoreVary": true
       },
       "urls": [
-        "Finance/926.34039593a2dc535d.js",
+        "Finance/926.8a09c27be83d44ac.js",
         "Finance/favicon.ico",
         "Finance/index.html",
-        "Finance/main.2b1152fdead1cdaa.js",
+        "Finance/main.c988de84d0b43dff.js",
         "Finance/manifest.webmanifest",
         "Finance/polyfills.2149575af5dd0bd9.js",
-        "Finance/runtime.39f5280a8ff75188.js",
-        "Finance/styles.c915a99a6e79683c.css"
+        "Finance/runtime.7ad5b0d92e415bc4.js",
+        "Finance/styles.af1ce5f908182c2f.css"
       ],
       "patterns": []
     },
@@ -80,7 +80,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "Finance/926.34039593a2dc535d.js": "23d28f68df9756efccfce458fd727405beb27e89",
+    "Finance/926.8a09c27be83d44ac.js": "02e195b50e64fc68fe6cead05f33b3fa2b55a4ec",
     "Finance/Roboto-Light.3d1bbede3dff569a.woff": "42eb5fdef68306d937a8fba20dd8da1b0de2bafa",
     "Finance/Roboto-Light.86fc2559ff73eac5.woff2": "8237523ff588300ff5d2da67a20bce60701a14b8",
     "Finance/Roboto-Medium.4fa4b1c02a877115.woff": "3e38dce596d2b9ab706d7371a28613d618b32220",
@@ -126,12 +126,12 @@
     "Finance/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "Finance/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.3a4cb006b229e5d7.woff2": "a80466bc637c657f0dc739e0924b025034a92ea9",
     "Finance/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.8fdb895cfe88be90.woff2": "b83aec9cceb453c24574d43f1ef4fde2a40eea65",
-    "Finance/index.html": "aa94015a72f3eab793e0420054309a62a48fce2f",
-    "Finance/main.2b1152fdead1cdaa.js": "260ec0ae88a27bd1f27a4e74462eddf6ace952ba",
+    "Finance/index.html": "b0d0146c16af90ab696c971999e0014018ed675d",
+    "Finance/main.c988de84d0b43dff.js": "cb02ce5189e9d905170ecd546e83513a11737bd7",
     "Finance/manifest.webmanifest": "02049c6eaff673d1a72bbc98620645ad3c515f6e",
     "Finance/polyfills.2149575af5dd0bd9.js": "6cddff5a65c46fa53cd8494f6515ceaeb6baa866",
-    "Finance/runtime.39f5280a8ff75188.js": "f7a555fe961d176e09fe684528d5fdb2b0ca5072",
-    "Finance/styles.c915a99a6e79683c.css": "e62d97978009aead79c0330f87370e68584df617"
+    "Finance/runtime.7ad5b0d92e415bc4.js": "4d0fc4390adab7165916b21396b20e557fa0da79",
+    "Finance/styles.af1ce5f908182c2f.css": "563a49b81b92745f4b533df14ca0e70b1da0c5ef"
   },
   "navigationUrls": [
     {
