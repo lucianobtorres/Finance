@@ -5,44 +5,22 @@ body {
   background-color: $color-background;
 }
 
-mat-tab-group mat-tab-header {
-  .mat-tab-label {
-    min-width: 0;
-  }
-
-  .mat-tab-label-active {
-    color: $primary-color;
-  }
-}
-
-.mat-tab-labels {
-  justify-content: space-between;
-  margin-block: 16px;
-}
-
-.mat-tab-body-wrapper {
-  height: 100%;
-}
-
-div .mat-tab-body-content,
-mat-tab-body {
-  overflow: hidden;
-}
-
 ::-webkit-scrollbar {
-  width: 10px;
+  cursor:pointer;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8fafb;
   border-radius: 8px;
+  background: #f8fafb;
+  outline: 2px #f8fafb solid;
   background-clip: padding-box;
-  border: 2px #f8fafb solid;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $primary-color;
-  border: 2px #f8fafb solid;
   border-radius: 8px;
+  background: $primary-color;
+  outline: 2px #f8fafb solid;
   background-clip: padding-box;
 }

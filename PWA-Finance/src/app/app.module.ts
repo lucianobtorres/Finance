@@ -22,8 +22,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { LancamentosComponent } from './components/lancamentos/lancamentos.component';
 import { ItemGrupoLancamentoComponent } from './components/item-grupo-lancamento/item-grupo-lancamento.component';
 import { TimeLineComponent } from './components/time-line/time-line.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { AddLancamentoComponent } from './components/add-lancamento/add-lancamento.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 
 registerLocaleData(localePt);
@@ -39,6 +40,8 @@ registerLocaleData(localePt);
     ItemGrupoLancamentoComponent,
     TimeLineComponent,
     MenuComponent,
+    AddLancamentoComponent,
+    DatePickerComponent,
   ],
   imports: [
     BrowserModule,

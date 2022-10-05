@@ -1,0 +1,18 @@
+div.container-button{
+  display: flex;
+  margin-inline: auto;
+  align-self: center;
+
+  #salvar{
+    margin-inline: auto;
+    margin-bottom: 20px;
+    width: 60%;
+    height: 48px;
+  }
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}

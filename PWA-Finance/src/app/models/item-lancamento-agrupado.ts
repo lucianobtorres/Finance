@@ -27,9 +27,9 @@ export class LancamentoAgrupado implements ILancamentoAgrupado {
   planosContas!: PlanoContasLancamento[];
 
   get valor(): number {
-    let soma = 0;
+    let soma:number = 0;
     for (const conta of this.planosContas) {
-      soma += conta.lancamentosGrupo.valor;
+      soma += Number(conta.lancamentosGrupo.valor);
     }
 
     return soma;
