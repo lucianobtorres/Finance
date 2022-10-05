@@ -1,3 +1,10 @@
+@use "theme-variables" as *;
+
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
 div.container-button{
   display: flex;
   margin-inline: auto;
@@ -9,6 +16,27 @@ div.container-button{
     width: 60%;
     height: 48px;
   }
+}
+
+mat-card {
+  height: 100%;
+  overflow: auto;
+}
+
+mat-card-content {
+  height: auto;
+}
+
+form {
+  height: 100%;
+  overflow: auto;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $primary-color;
 }
 
 form {

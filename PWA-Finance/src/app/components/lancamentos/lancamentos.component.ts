@@ -21,7 +21,6 @@ export class LancamentosComponent implements OnInit {
 
   public gruposConta!: GrupoContas[];
   public planosConta!: PlanoContas[];
-  public lancamentos!: Lancamento[];
   public meiosMovimentacao!: MeioMovimentacao[];
 
   constructor(readonly bottomSheet: MatBottomSheet) {
@@ -109,14 +108,21 @@ export class LancamentosComponent implements OnInit {
       if (!planoConta) return;
       if (!meioMov) return;
 
-      db.lancamentos.add(
-        { planoContasId: result.planoContasId,
-          data: new Date(result.data),
-          desc: result.desc,
-          valor: result.valor,
-          meioMovimentacaoId: result.meioMovimentacaoId }).catch ((err) => {
-            console.log(err);
+      db.lancamentos
+        .add(
+          {
+            planoContasId: result.planoContasId,
+            data: new Date(result.data),
+            desc: result.desc,
+            valor: result.valor,
+            meioMovimentacaoId: result.meioMovimentacaoId
+          })
+        .catch((err) => {
+          console.log(err);
         });
+
+        this.itensLancamentos = new ItemLancamentoAgrupado();
+
     });
   }
 }

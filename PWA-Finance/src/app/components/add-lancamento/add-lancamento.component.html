@@ -1,10 +1,11 @@
-<div fxLayoutAlign="space-between">
-  <span>Cancelar</span>
+<div class="container">
+  <mat-card class="mat-elevation-z0">
   <mat-card-title>
-    Novo Lançamento
+    <div class="header">
+    <button mat-button color="primary" (click)="cancelar()">Cancelar</button>
+    Adicionar Lançamento
+    </div>
   </mat-card-title>
-</div>
-<mat-card>
   <mat-card-content>
     <form>
       <mat-form-field>
@@ -39,13 +40,15 @@
       </mat-form-field>
     </form>
   </mat-card-content>
-  <mat-card-actions>
-    <div class="container-button">
-      <button
-      id='salvar'
-      color='primary'
-      mat-raised-button
+  <mat-card-footer>
+
+    <mat-card-actions>
+      <div class="container-button">
+        <button
+      id='salvar' mat-flat-button color="primary"
       (click)="salvar()">Adicionar</button>
     </div>
   </mat-card-actions>
+</mat-card-footer>
 </mat-card>
+</div>

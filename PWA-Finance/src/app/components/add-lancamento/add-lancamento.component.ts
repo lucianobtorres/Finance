@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
 
@@ -23,7 +23,6 @@ export class AddLancamentoComponent implements OnInit {
   public meiosMovimentacao?: MeioMovimentacao[];
 
   constructor(
-    private fb: FormBuilder,
     private _bottomSheetRef: MatBottomSheetRef<AddLancamentoComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data:
       {
@@ -65,5 +64,9 @@ export class AddLancamentoComponent implements OnInit {
       valor: Number(value.valor),
       meioMovimentacaoId: value.meioMov.id
     });
+  }
+
+  cancelar() {
+    this._bottomSheetRef.dismiss();
   }
 }

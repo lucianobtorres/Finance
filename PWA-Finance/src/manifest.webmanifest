@@ -1,11 +1,12 @@
 {
   "name": "PWA-Finance",
   "short_name": "PWA-Finance",
-  "theme_color": "#EC7D10",
+  "theme_color": "#fafafa",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
+  "orientation":"portrait",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
