@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
 
 @Component({
@@ -6,9 +6,7 @@ import { LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
   templateUrl: './item-grupo-lancamento.component.html',
   styleUrls: ['./item-grupo-lancamento.component.scss']
 })
-export class ItemGrupoLancamentoComponent implements OnInit {
+export class ItemGrupoLancamentoComponent {
   @Input() itemGrupo!: LancamentoAgrupado;
-
-  ngOnInit(): void {
-  }
+  @Output() public removeLancamento = new EventEmitter<number>();
 }

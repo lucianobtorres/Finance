@@ -33,7 +33,7 @@ export class TimelineComponent implements OnInit {
   private createRange(cursor: Date) {
     const dia = cursor.getDate();
     const diaDaSemana = this.datepipe.transform(cursor, 'EEE')?.toUpperCase().substring(0, 3) ?? '';
-    const isHoje = dia == this.hoje.getDate();
+    const isHoje = dia === this.hoje.getDate();
 
     this.dias.push({ dia, diaDaSemana, isHoje });
 

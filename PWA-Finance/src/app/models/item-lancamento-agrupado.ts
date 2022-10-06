@@ -1,5 +1,5 @@
 import { Dictionary } from "../util";
-import { GrupoContas, ILancamentoAgrupado, PlanoContasLancamento } from "./interfaces";
+import { GrupoContas, ILancamentoAgrupado, Lancamento, PlanoContasLancamento } from "./interfaces";
 
 export class ItemLancamentoAgrupado extends Dictionary<LancamentoAgrupado> {
   public override values(): LancamentoAgrupado[] {
@@ -9,16 +9,16 @@ export class ItemLancamentoAgrupado extends Dictionary<LancamentoAgrupado> {
   public lastLctoGrupo(key: number): Date | undefined {
     let itemNew: PlanoContasLancamento | undefined = undefined;
     for (const planoConta of this[key].planosContas) {
-      const data = planoConta.lancamentosGrupo.data;
+      const data = planoConta.lancamento.data;
 
       if (
         !itemNew ||
-        itemNew.lancamentosGrupo.data.getTime() < data.getTime()) {
+        itemNew.lancamento.data.getTime() < data.getTime()) {
         itemNew = planoConta;
       }
     }
 
-    return itemNew?.lancamentosGrupo.data;
+    return itemNew?.lancamento.data;
   }
 }
 
@@ -27,31 +27,44 @@ export class LancamentoAgrupado implements ILancamentoAgrupado {
   planosContas!: PlanoContasLancamento[];
 
   get valor(): number {
-    let soma:number = 0;
+    let soma: number = 0;
     for (const conta of this.planosContas) {
-      soma += Number(conta.lancamentosGrupo.valor);
+      soma += Number(conta.lancamento.valor);
     }
 
     return soma;
   }
 
-  get lastDate(): Date | undefined{
+  get lastDate(): Date | undefined {
     let itemNew: PlanoContasLancamento | undefined = undefined;
     for (const planoConta of this.planosContas) {
-      const data = planoConta.lancamentosGrupo.data;
+      const data = planoConta.lancamento.data;
 
       if (
         !itemNew ||
-        itemNew.lancamentosGrupo.data.getTime() < data.getTime()) {
+        itemNew.lancamento.data.getTime() < data.getTime()) {
         itemNew = planoConta;
       }
     }
 
-    return itemNew?.lancamentosGrupo.data;
+    return itemNew?.lancamento.data;
   }
 
-  constructor(grupoContas: GrupoContas){
-    this.grupoConta = grupoContas;
+  constructor(grupoContas: GrupoContas | undefined) {
+    if (grupoContas) this.grupoConta = grupoContas;
     this.planosContas = [];
+  }
+
+  add(planoConta: PlanoContasLancamento): void {
+    if (this.planosContas.find(x => x.lancamento.id == planoConta.lancamento.id)) return;
+    this.planosContas.push(planoConta);
+  }
+
+  remove(lancamento: Lancamento): boolean {
+    const index = (this.planosContas.findIndex(x => x.lancamento.id === lancamento.id));
+    if (index === -1) return false;
+
+    this.planosContas.splice(index, 1);
+    return true;
   }
 }

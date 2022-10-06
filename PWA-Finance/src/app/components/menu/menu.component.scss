@@ -12,6 +12,10 @@ footer {
   width: 100%;
 }
 
+button:not(.active-menu-item) {
+  color: $color-medium-emphasis;
+}
+
 .active-menu-item {
   color: $primary-color;
 }
@@ -25,7 +29,7 @@ footer {
   justify-content: center;
 
   small {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 

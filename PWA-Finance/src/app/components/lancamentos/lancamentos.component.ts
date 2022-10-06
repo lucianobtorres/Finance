@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { liveQuery } from 'dexie';
 import { db } from 'src/app/db/finance-db';
@@ -19,52 +19,45 @@ export class LancamentosComponent implements OnInit {
   public meiosMovs$ = liveQuery(() => db.meioMovimentacao.toArray());
   public grupoContas$ = liveQuery(() => db.grupoContas.toArray());
 
+  public meiosMovimentacao!: MeioMovimentacao[];
   public gruposConta!: GrupoContas[];
   public planosConta!: PlanoContas[];
-  public meiosMovimentacao!: MeioMovimentacao[];
+  public lancamentos!: Lancamento[];
 
   constructor(readonly bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
+    this.meiosMovs$.subscribe((meiosMovs) => {
+      this.meiosMovimentacao = meiosMovs;
+    });
+
+    this.grupoContas$.subscribe((gruposContas) => {
+      this.gruposConta = gruposContas;
+    });
+
+    this.planoContas$.subscribe((plansContas) => {
+      this.planosConta = plansContas;
+    });
+
     this.lancamentos$.subscribe((lctos) => {
+      this.lancamentos = lctos;
 
-      lctos.map(lcto => {
+      this.lancamentos.map(lcto => {
+        const meioMov = this.meiosMovimentacao.find(x => x.id === lcto.meioMovimentacaoId);
+        const planConta = this.planosConta.find(x => x.id === lcto.planoContasId);
+        const grupo = this.gruposConta.find(x => x.id === planConta?.grupoContasId);
+        const idGrupo = grupo?.id ?? 0;
 
-        let meioMovLcto: MeioMovimentacao;
+        if (!this.itensLancamentos.containsKey(idGrupo)) {
+          const item = new LancamentoAgrupado(grupo);
+          this.itensLancamentos.add(idGrupo, item);
+        }
 
-        this.meiosMovs$.subscribe((meiosMovs) => {
-          this.meiosMovimentacao = meiosMovs;
-
-          const meioMov = meiosMovs.find(x => x.id === lcto.meioMovimentacaoId);
-          if (!meioMov) return;
-
-          meioMovLcto = meioMov;
-        });
-
-        this.planoContas$.subscribe((plansContas) => {
-          this.planosConta = plansContas;
-
-          const planConta = plansContas.find(x => x.id === lcto.planoContasId);
-          if (!planConta) return;
-
-          this.grupoContas$.subscribe((gruposContas) => {
-            this.gruposConta = gruposContas;
-            const grupo = gruposContas.find(x => x.id === planConta.grupoContasId);
-            if (!grupo) return;
-
-            const idGrupo = grupo.id ?? 0;
-            if (!this.itensLancamentos.containsKey(idGrupo)) {
-              const item = new LancamentoAgrupado(grupo);
-              this.itensLancamentos.add(idGrupo, item);
-            }
-
-            this.itensLancamentos[idGrupo]?.planosContas?.push({
-              planoConta: planConta,
-              lancamentosGrupo: lcto,
-              meioMovimentacao: meioMovLcto,
-            });
-          });
+        this.itensLancamentos[idGrupo]?.add({
+          planoConta: planConta!,
+          lancamento: lcto,
+          meioMovimentacao: meioMov!,
         });
       });
     });
@@ -84,7 +77,7 @@ export class LancamentosComponent implements OnInit {
 
     this.itensLancamentos[idGrupo]?.planosContas?.push({
       planoConta: planConta,
-      lancamentosGrupo: lcto,
+      lancamento: lcto,
       meioMovimentacao: meioMovLcto,
     });
 
@@ -120,9 +113,35 @@ export class LancamentosComponent implements OnInit {
         .catch((err) => {
           console.log(err);
         });
-
-        this.itensLancamentos = new ItemLancamentoAgrupado();
-
     });
+  }
+
+  removeLancamento(id: number) {
+    const lancamento = this.lancamentos.find(x  => x.id === id);
+    if (!lancamento) return;
+
+    const planConta = this.planosConta.find(x => x.id === lancamento.planoContasId);
+    if (!planConta) return;
+
+    const idGrupo = planConta.grupoContasId ?? 0;
+    if (!this.itensLancamentos.containsKey(idGrupo)) return;
+
+    if (!this.itensLancamentos[idGrupo].remove(lancamento)) return;
+    console.log(this.itensLancamentos[idGrupo].planosContas)
+    console.log(this.itensLancamentos[idGrupo].planosContas.length === 0)
+
+    if (this.itensLancamentos[idGrupo].planosContas.length === 0) {
+      this.itensLancamentos.remove(idGrupo);
+    }
+
+    console.log(this.itensLancamentos)
+
+    db.lancamentos
+      .where("id")
+      .equals(id)
+      .delete()
+      .then((deleteCount) => {
+        console.log("Deleted " + deleteCount + " objects");
+      });
   }
 }

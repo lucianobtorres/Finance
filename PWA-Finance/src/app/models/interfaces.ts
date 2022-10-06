@@ -36,7 +36,7 @@ export interface ItemLancamento {
 
 export interface PlanoContasLancamento {
   planoConta: PlanoContas,
-  lancamentosGrupo: Lancamento,
+  lancamento: Lancamento,
   meioMovimentacao: MeioMovimentacao,
 }
 

@@ -16,11 +16,14 @@
   </mat-expansion-panel-header>
   <div class="itens-financeiros" *ngIf="panel.expanded">
     <ng-container *ngFor="let plan of itemGrupo.planosContas">
-      <span>{{ plan.lancamentosGrupo.data | date:'dd-MMM'}}</span>
+      <span>{{ plan.lancamento.data | date:'dd-MMM'}}</span>
       <small>{{ plan.planoConta.title}}</small>
-      <small>{{ plan.lancamentosGrupo.desc }}</small>
+      <small>{{ plan.lancamento.desc }}</small>
       <small>R$</small>
-      <span class="valores">{{ plan.lancamentosGrupo.valor | number : '1.2-2'}}</span>
+      <span class="valores">{{ plan.lancamento.valor | number : '1.2-2'}}</span>
+      <button mat-icon-button (click)="removeLancamento.emit(plan.lancamento.id)">
+        <mat-icon>clear</mat-icon>
+      </button>
     </ng-container>
   </div>
 </mat-expansion-panel>

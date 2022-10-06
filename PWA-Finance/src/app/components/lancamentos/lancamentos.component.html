@@ -1,11 +1,8 @@
-
-
   <div class="categorias">
-
     <fi-item-grupo-lancamento
+      (removeLancamento)="removeLancamento($event)"
       *ngFor="let itemGrupo of this.itensLancamentos.values()"
       [itemGrupo]="itemGrupo"
     >
     </fi-item-grupo-lancamento>
-
 </div>
