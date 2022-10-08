@@ -47,7 +47,7 @@ mat-expansion-panel-header.categoria-container,
   margin-block: 16px;
   align-items: center;
 
-  span {
+  span:not(.nao-realizado) {
     color: $primary-color;
   }
 
@@ -58,4 +58,8 @@ mat-expansion-panel-header.categoria-container,
 
 mat-icon {
   color: $color-medium-emphasis;
+}
+
+.nao-realizado {
+  color: $color-low-emphasis;
 }

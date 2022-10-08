@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { liveQuery } from 'dexie';
+import { ToastService } from 'src/app/core/toast-service.service';
 import { db } from 'src/app/db/finance-db';
 import { GrupoContas, PlanoContas, Lancamento, MeioMovimentacao } from 'src/app/models/interfaces';
 import { ItemLancamentoAgrupado, LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
@@ -24,7 +25,10 @@ export class LancamentosComponent implements OnInit {
   public planosConta!: PlanoContas[];
   public lancamentos!: Lancamento[];
 
-  constructor(readonly bottomSheet: MatBottomSheet) {
+  constructor(
+    readonly bottomSheet: MatBottomSheet,
+    readonly toastService: ToastService,
+    ) {
   }
 
   ngOnInit(): void {
@@ -110,14 +114,17 @@ export class LancamentosComponent implements OnInit {
             valor: result.valor,
             meioMovimentacaoId: result.meioMovimentacaoId
           })
+        .then(() => {
+          this.toastService.showSuccess("Lançamento adicionado");
+        })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     });
   }
 
   removeLancamento(id: number) {
-    const lancamento = this.lancamentos.find(x  => x.id === id);
+    const lancamento = this.lancamentos.find(x => x.id === id);
     if (!lancamento) return;
 
     const planConta = this.planosConta.find(x => x.id === lancamento.planoContasId);
@@ -127,21 +134,16 @@ export class LancamentosComponent implements OnInit {
     if (!this.itensLancamentos.containsKey(idGrupo)) return;
 
     if (!this.itensLancamentos[idGrupo].remove(lancamento)) return;
-    console.log(this.itensLancamentos[idGrupo].planosContas)
-    console.log(this.itensLancamentos[idGrupo].planosContas.length === 0)
 
     if (this.itensLancamentos[idGrupo].planosContas.length === 0) {
       this.itensLancamentos.remove(idGrupo);
     }
 
-    console.log(this.itensLancamentos)
-
     db.lancamentos
       .where("id")
       .equals(id)
-      .delete()
-      .then((deleteCount) => {
-        console.log("Deleted " + deleteCount + " objects");
+      .delete().catch(e => {
+        console.error(e);
       });
   }
 }

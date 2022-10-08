@@ -21,10 +21,11 @@ export interface MeioMovimentacao {
 export interface Lancamento {
   id?: number;
   planoContasId: number | undefined;
+  meioMovimentacaoId: number | undefined;
   data: Date;
   desc: string;
   valor: number;
-  meioMovimentacaoId: number | undefined;
+  naoRealizado?: boolean;
 }
 
 export interface ItemLancamento {

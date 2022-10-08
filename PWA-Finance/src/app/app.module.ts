@@ -24,6 +24,8 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AddLancamentoComponent } from './components/add-lancamento/add-lancamento.component';
 
+import { ToastComponent } from './components/toast/toast.component';
+
 
 registerLocaleData(localePt);
 
@@ -38,6 +40,7 @@ registerLocaleData(localePt);
     TimelineComponent,
     MenuComponent,
     AddLancamentoComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,

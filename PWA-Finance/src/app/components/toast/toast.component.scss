@@ -1,0 +1,58 @@
+@use 'theme-variables' as *;
+
+::ng-deep snack-bar-container.fi-toast-container {
+  position: absolute;
+  top: $toolbar-height;
+  right: 0px;
+
+  margin: 0px;
+  padding: 0px;
+  max-width: 400px;
+
+  background-color: $color-background-default;
+}
+
+@mixin style-color-type-msg($selector, $cor) {
+
+  #{$selector},
+  #{$selector} mat-icon:not(.icon-close) {
+    color: $cor;
+
+    .side-bar-color {
+      background-color: $cor;
+    }
+  }
+}
+
+@include style-color-type-msg('.fi-msg-success', $color-status-resolved);
+@include style-color-type-msg('.fi-msg-warning', $color-status-pendent);
+@include style-color-type-msg('.fi-msg-error', $color-status-urgent);
+
+.toast-main {
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.side-bar-color {
+  min-width: 6px;
+}
+
+mat-icon, fi-button-icon {
+  margin-block: auto;
+  min-width: 24px;
+}
+
+.message-box {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  padding-block: 12px;
+}
+
+.mat-small {
+  color: $color-medium-emphasis;
+}

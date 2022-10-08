@@ -1,12 +1,12 @@
 <mat-card class="mat-elevation-z0">
-  <div fxLayoutAlign="space-between">
-    <fi-header></fi-header>
-    <button mat-button>
-    <mat-icon (click)="lancamento.addLancamento()">add</mat-icon>
-  </button >
-  </div>
-  <mat-card-content>
-    <fi-time-line></fi-time-line>
-    <fi-lancamentos #lancamento></fi-lancamentos>
-  </mat-card-content>
+    <div fxLayoutAlign="space-between">
+        <fi-header></fi-header>
+        <button mat-button (click)="lancamento.addLancamento()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <mat-card-content>
+        <fi-time-line></fi-time-line>
+        <fi-lancamentos #lancamento></fi-lancamentos>
+    </mat-card-content>
 </mat-card>

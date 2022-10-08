@@ -103,8 +103,8 @@ export class FinanceDB extends Dexie {
     ] , { allKeys: true });
 
     await db.lancamentos.bulkAdd([
-      { planoContasId: 43, data: new Date(2022, 8, 1), desc: 'iof', valor: 5.83, meioMovimentacaoId: 4 },
-      { planoContasId: 10, data: new Date(2022, 8, 2), desc: 'Lanche', valor: 81, meioMovimentacaoId: 4 },
+      { planoContasId: 43, data: new Date(2022, 9, 7), desc: 'iof', valor: 5.83, meioMovimentacaoId: 4, naoRealizado: true },
+      { planoContasId: 10, data: new Date(2022, 10, 2), desc: 'Lanche', valor: 81, meioMovimentacaoId: 4 },
       { planoContasId: 37, data: new Date(2022, 8, 2), desc: 'Hospedagem Mont Blanc', valor: 796, meioMovimentacaoId: 4 },
       { planoContasId: 7, data: new Date(2022, 8, 5), desc: 'Guanabara', valor: 766.81, meioMovimentacaoId: 4 }
     ]);
