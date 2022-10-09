@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1665234074355,
+  "timestamp": 1665300016827,
   "index": "Finance/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "Finance/784.8945d5c5f21e6fac.js",
         "Finance/favicon.ico",
         "Finance/index.html",
-        "Finance/main.c9d17d8e6e75f5d8.js",
+        "Finance/main.328536b9125f4d85.js",
         "Finance/manifest.webmanifest",
         "Finance/polyfills.2149575af5dd0bd9.js",
         "Finance/runtime.ead84b40d6ab0a60.js",
@@ -126,8 +126,8 @@
     "Finance/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "Finance/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.3a4cb006b229e5d7.woff2": "a80466bc637c657f0dc739e0924b025034a92ea9",
     "Finance/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.8fdb895cfe88be90.woff2": "b83aec9cceb453c24574d43f1ef4fde2a40eea65",
-    "Finance/index.html": "ec49398dc84389d7b0426ae485ee46f8d842ee0e",
-    "Finance/main.c9d17d8e6e75f5d8.js": "8258bb339476e0a9fd8af1fafa16629a28b72f9c",
+    "Finance/index.html": "5b1a773803069d26cd05e75f03d827d4534565f7",
+    "Finance/main.328536b9125f4d85.js": "162e63f2a5f287041d956f9fae890cbeb3453d19",
     "Finance/manifest.webmanifest": "02049c6eaff673d1a72bbc98620645ad3c515f6e",
     "Finance/polyfills.2149575af5dd0bd9.js": "6cddff5a65c46fa53cd8494f6515ceaeb6baa866",
     "Finance/runtime.ead84b40d6ab0a60.js": "8e551820e720d915c2e601c79f25a32748d38f56",
