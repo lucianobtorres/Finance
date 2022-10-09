@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { lastDayOfMonth, startOfMonth } from 'date-fns';
 import { liveQuery } from 'dexie';
-import { ToastService } from 'src/app/core/toast-service.service';
+import { LancamentoService } from 'src/app/services/lancamento.service';
 import { db } from 'src/app/db/finance-db';
 import { GrupoContas, PlanoContas, Lancamento, MeioMovimentacao } from 'src/app/models/interfaces';
 import { ItemLancamentoAgrupado, LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
@@ -13,6 +14,7 @@ import { AddLancamentoComponent } from '../add-lancamento/add-lancamento.compone
   styleUrls: ['./lancamentos.component.scss']
 })
 export class LancamentosComponent implements OnInit {
+  private hoje = new Date();
   public itensLancamentos = new ItemLancamentoAgrupado();
 
   public lancamentos$ = liveQuery(() => db.lancamentos.toArray());
@@ -27,8 +29,9 @@ export class LancamentosComponent implements OnInit {
 
   constructor(
     readonly bottomSheet: MatBottomSheet,
-    readonly toastService: ToastService,
-    ) {
+    readonly lancamentoService: LancamentoService
+  ) {
+    this.hoje.setHours(0, 0, 0, 0);
   }
 
   ngOnInit(): void {
@@ -45,7 +48,10 @@ export class LancamentosComponent implements OnInit {
     });
 
     this.lancamentos$.subscribe((lctos) => {
-      this.lancamentos = lctos;
+      this.lancamentos = lctos.filter(x =>
+        x.data > startOfMonth(this.hoje) &&
+        x.data <= lastDayOfMonth(this.hoje)
+        );
 
       this.lancamentos.map(lcto => {
         const meioMov = this.meiosMovimentacao.find(x => x.id === lcto.meioMovimentacaoId);
@@ -67,63 +73,25 @@ export class LancamentosComponent implements OnInit {
     });
   }
 
-  incluirLancamentoNoGrupo(
-    planConta: PlanoContas,
-    lcto: Lancamento,
-    meioMovLcto: MeioMovimentacao,
-  ): void {
-
-    const idGrupo = planConta.grupoContasId ?? 0;
-
-    if (!this.itensLancamentos.containsKey(idGrupo)) {
-      //
-    }
-
-    this.itensLancamentos[idGrupo]?.planosContas?.push({
-      planoConta: planConta,
-      lancamento: lcto,
-      meioMovimentacao: meioMovLcto,
-    });
-
-  }
-
   addLancamento() {
-    const config: MatBottomSheetConfig = {
-      data: {
-        planosConta: this.planosConta,
-        meiosMovimentacao: this.meiosMovimentacao
-      }
-    };
-
-    const addRef = this.bottomSheet.open(AddLancamentoComponent, config);
-
-    addRef.afterDismissed().subscribe((result: Lancamento) => {
-      if (!result) return;
-      const planoConta = this.planosConta.find(x => x.id === result.planoContasId);
-      const meioMov = this.meiosMovimentacao.find(x => x.id === result.meioMovimentacaoId);
-
-      if (!planoConta) return;
-      if (!meioMov) return;
-
-      db.lancamentos
-        .add(
-          {
-            planoContasId: result.planoContasId,
-            data: new Date(result.data),
-            desc: result.desc,
-            valor: result.valor,
-            meioMovimentacaoId: result.meioMovimentacaoId
-          })
-        .then(() => {
-          this.toastService.showSuccess("Lançamento adicionado");
+    this.bottomSheet
+      .open(
+        AddLancamentoComponent,
+        {
+          data: {
+            planosConta: this.planosConta,
+            meiosMovimentacao: this.meiosMovimentacao
+          }
         })
-        .catch((err) => {
-          console.error(err);
-        });
-    });
+      .afterDismissed()
+      .subscribe((result: Lancamento) => {
+        if (!result) return;
+        result.naoRealizado = result.data.getTime() >= this.hoje.getTime();
+        this.lancamentoService.add(result, 'Lancamento adicionado');
+      });
   }
 
-  removeLancamento(id: number) {
+  deleteLancamento(id: number) {
     const lancamento = this.lancamentos.find(x => x.id === id);
     if (!lancamento) return;
 
@@ -139,11 +107,17 @@ export class LancamentosComponent implements OnInit {
       this.itensLancamentos.remove(idGrupo);
     }
 
-    db.lancamentos
-      .where("id")
-      .equals(id)
-      .delete().catch(e => {
-        console.error(e);
-      });
+    this.lancamentoService.delete(id, 'Lancamento removido');
+  }
+
+  lancamentoRealizado(id: number) {
+    const lancamento = this.lancamentos.find(x => x.id === id);
+    if (!lancamento) return;
+
+    lancamento.naoRealizado = false;
+    this.lancamentoService.update(id, { naoRealizado: false }, '');
+
+    const index =this.lancamentos.indexOf(lancamento);
+    this.lancamentos[index] = lancamento;
   }
 }

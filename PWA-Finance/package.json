@@ -27,6 +27,7 @@
     "dexie": "^3.2.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "web-push": "^3.5.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

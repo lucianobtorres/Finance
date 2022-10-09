@@ -7,7 +7,12 @@
     </div>
     <div class="mat-small">{{ data.description }}</div>
   </div>
-  <button mat-button class="icon-close" (click)="dismiss()">
+  <button *ngIf="!dismissing"
+    mat-button class="icon-close" (click)="dismiss()">
     <mat-icon>clear</mat-icon>
+  </button>
+  <button *ngIf="dismissing"
+    mat-button class="icon-close" (click)="desfazer()">
+    Desfazer
   </button>
 </div>

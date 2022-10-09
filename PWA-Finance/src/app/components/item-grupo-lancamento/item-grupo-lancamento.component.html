@@ -28,9 +28,16 @@
         [ngClass]="{ 'nao-realizado' : plan.lancamento.naoRealizado }"
         class="valores">{{ plan.lancamento.valor | number : '1.2-2'}}
       </span>
+      <div class="actions">
       <button mat-icon-button (click)="removeLancamento.emit(plan.lancamento.id)">
         <mat-icon>clear</mat-icon>
       </button>
+      <button *ngIf="plan.lancamento.naoRealizado && plan.lancamento.data.getTime() <= hoje.getTime()"
+        mat-icon-button
+        (click)="realizar.emit(plan.lancamento.id)">
+        <mat-icon>task_alt</mat-icon>
+      </button>
+    </div>
     </ng-container>
   </div>
 </mat-expansion-panel>

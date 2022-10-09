@@ -10,6 +10,7 @@ import { LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
 export class ItemGrupoLancamentoComponent {
   @Input() itemGrupo!: LancamentoAgrupado;
   @Output() public removeLancamento = new EventEmitter<number>();
+  @Output() public realizar = new EventEmitter<number>();
 
   public hoje: Date;
 

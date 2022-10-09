@@ -12,6 +12,7 @@ import { MessageData, TypeToast } from 'src/app/models/message-data';
 export class ToastComponent {
   public readonly icon: string;
   public readonly messageClass: string;
+  public readonly dismissing: boolean = false;
 
   constructor(
     private snackBarRef: MatSnackBarRef<ToastComponent>,
@@ -33,10 +34,20 @@ export class ToastComponent {
         this.icon = 'error';
         this.messageClass = 'fi-msg-error';
         break;
+
+      case TypeToast.DISMISSING:
+        this.icon = 'check_circle';
+        this.messageClass = 'fi-msg-success';
+        this.dismissing = true;
+        break;
     }
   }
 
   dismiss(): void {
     this.snackBarRef.dismiss();
+  }
+
+  desfazer(): void {
+    this.snackBarRef.dismissWithAction();
   }
 }
