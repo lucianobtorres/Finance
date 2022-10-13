@@ -44,3 +44,13 @@ form {
   grid-template-columns: 1fr;
   gap: 16px;
 }
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mat-chip-list {
+  width: 99%;
+}

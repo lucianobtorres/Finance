@@ -1,7 +1,7 @@
 
 export interface GrupoContas {
   id?: number;
-  sigla: string;
+  icone: string;
   title: string;
 }
 

@@ -2,8 +2,21 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'fi-page-not-found',
-  template: `<h1 class='primary-color'> Página não encontrada </h1>`
+  template: `
+  <mat-card class="mat-elevation-z0">
+    <div fxLayoutAlign="space-between">
+        <fi-header>
+          Página não encontrada
+        </fi-header>
+    </div>
+  </mat-card>
+  `,
+  styles: [`
+  mat-card {
+    height: 100vh;
+    overflow: hidden;
+  }
+  `]
 })
 
-export class PageNotFoundComponent {
-}
+export class PageNotFoundComponent { }

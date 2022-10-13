@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'fi-header',
@@ -7,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public hoje = new Date();
+  @Input() titulo?: string = undefined;
+  @Input() subTitulo?: string = undefined;
 }

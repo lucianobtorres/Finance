@@ -1,7 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { COMMA, ENTER, X } from '@angular/cdk/keycodes';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
+import { MatChip, MatChipInputEvent, MatChipList } from '@angular/material/chips';
+import { map, Observable, startWith } from 'rxjs';
+import { GrupoContas, MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
 
 
 interface FormAdd {
@@ -17,28 +21,57 @@ interface FormAdd {
   templateUrl: './add-lancamento.component.html',
   styleUrls: ['./add-lancamento.component.scss']
 })
-export class AddLancamentoComponent implements OnInit {
+export class AddLancamentoComponent implements OnInit, AfterViewInit {
   public formAdd!: FormGroup<FormAdd>;
-  public planosConta?: PlanoContas[];
-  public meiosMovimentacao?: MeioMovimentacao[];
+  public planosConta: PlanoContas[];
+  @ViewChild('chipList') matChipList!: MatChipList;
 
   constructor(
     private _bottomSheetRef: MatBottomSheetRef<AddLancamentoComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data:
       {
+        gruposConta: GrupoContas[],
         planosConta: PlanoContas[],
         meiosMovimentacao: MeioMovimentacao[]
-      }) { }
+      }) {
+    this.planosConta = data.planosConta;
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.matChipList)
+    if (!this.matChipList) return;
+
+    this.matChipList.chipSelectionChanges.subscribe(() => {
+      const grupos: GrupoContas[] = [];
+      if (this.matChipList.selected instanceof Array) {
+        for (const item of this.matChipList.selected) {
+          grupos.push(item.value)
+        }
+
+        if (grupos.length < 1) {
+          this.planosConta = this.data.planosConta;
+          return;
+        }
+
+        this.planosConta = this.data.planosConta.filter(x => grupos.some(y => y.id === x.grupoContasId));
+      };
+    });
+  }
 
   ngOnInit(): void {
-
     this.formAdd = new FormGroup({
-      planConta: new FormControl<PlanoContas | null | undefined>(null, Validators.required),
-      meioMov: new FormControl<MeioMovimentacao | null | undefined>(null, Validators.required),
-      desc: new FormControl<string | null | undefined>(null),
-      data: new FormControl<Date | null | undefined>(null, Validators.required),
+      data: new FormControl<Date | null | undefined>(new Date(), Validators.required),
       valor: new FormControl<number | null | undefined>(null, Validators.required),
+      planConta: new FormControl<PlanoContas | null | undefined>(null, Validators.required),
+      desc: new FormControl<string | null | undefined>(null),
+      meioMov: new FormControl<MeioMovimentacao | null | undefined>(null, Validators.required),
     });
+
+
+  }
+
+  select(chip: MatChip) {
+    chip.toggleSelected();
   }
 
   salvar() {

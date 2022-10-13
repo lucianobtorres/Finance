@@ -1,8 +1,10 @@
 <mat-card-header>
   <mat-card-title>
-    {{ hoje | date:'MMMM' }}
+    <ng-content *ngIf="!titulo"></ng-content>
+    {{ titulo }}
   </mat-card-title>
   <mat-card-subtitle>
-    {{ hoje | date:'yyyy' }}
+    <ng-content select="[subtitulo]" *ngIf="!subTitulo"></ng-content>
+    {{ subTitulo }}
   </mat-card-subtitle>
 </mat-card-header>

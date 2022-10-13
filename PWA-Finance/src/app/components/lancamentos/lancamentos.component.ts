@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { lastDayOfMonth, startOfMonth } from 'date-fns';
 import { liveQuery } from 'dexie';
-import { LancamentoService } from 'src/app/services/lancamento.service';
 import { db } from 'src/app/db/finance-db';
+
 import { GrupoContas, PlanoContas, Lancamento, MeioMovimentacao } from 'src/app/models/interfaces';
 import { ItemLancamentoAgrupado, LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
+import { LancamentoService } from 'src/app/services/lancamento.service';
+
 import { AddLancamentoComponent } from '../add-lancamento/add-lancamento.component';
 
 @Component({
@@ -49,8 +51,7 @@ export class LancamentosComponent implements OnInit {
 
     this.lancamentos$.subscribe((lctos) => {
       this.lancamentos = lctos.filter(x =>
-        x.data > startOfMonth(this.hoje) &&
-        x.data <= lastDayOfMonth(this.hoje)
+        this.filtrarLancamentosMes(x)
         );
 
       this.lancamentos.map(lcto => {
@@ -73,12 +74,19 @@ export class LancamentosComponent implements OnInit {
     });
   }
 
+  private filtrarLancamentosMes(lcto: Lancamento): boolean {
+    return true;
+    return lcto.data > startOfMonth(this.hoje) &&
+      lcto.data <= lastDayOfMonth(this.hoje);
+  }
+
   addLancamento() {
     this.bottomSheet
       .open(
         AddLancamentoComponent,
         {
           data: {
+            gruposConta: this.gruposConta,
             planosConta: this.planosConta,
             meiosMovimentacao: this.meiosMovimentacao
           }

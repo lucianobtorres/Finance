@@ -22,12 +22,12 @@ export class FinanceDB extends Dexie {
 
   async populate() {
     const keysGrupo = await db.grupoContas.bulkAdd([
-      { title: 'Receita', sigla: 'R' },
-      { title: 'Alimentação', sigla: 'A' },
-      { title: 'Moradia', sigla: 'M' },
-      { title: 'Transporte', sigla: 'T' },
-      { title: 'Lazer', sigla: 'L' },
-      { title: 'Serviços Financeiros', sigla: 'F' },
+      { title: 'Receita', icone: 'attach_money' },
+      { title: 'Alimentação', icone: 'restaurant' },
+      { title: 'Moradia', icone: 'home_work' },
+      { title: 'Transporte', icone: 'commute' },
+      { title: 'Lazer', icone: 'sports_soccer' },
+      { title: 'Serviços Financeiros', icone: 'receipt' },
     ], { allKeys: true });
 
     let ids: number = 1;

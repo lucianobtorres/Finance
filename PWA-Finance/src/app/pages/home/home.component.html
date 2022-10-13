@@ -1,6 +1,11 @@
 <mat-card class="mat-elevation-z0">
     <div fxLayoutAlign="space-between">
-        <fi-header></fi-header>
+        <fi-header>
+          {{ hoje | date:'MMMM' }}
+          <ng-container subtitulo>
+            {{ hoje | date:'yyyy' }}
+          </ng-container>
+        </fi-header>
         <button mat-button (click)="lancamento.addLancamento()">
             <mat-icon>add</mat-icon>
         </button>

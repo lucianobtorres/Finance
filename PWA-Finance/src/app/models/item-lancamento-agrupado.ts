@@ -1,4 +1,4 @@
-import { Dictionary } from "../util";
+import { Dictionary } from "../utils/idictionary";
 import { GrupoContas, ILancamentoAgrupado, Lancamento, PlanoContasLancamento } from "./interfaces";
 
 export class ItemLancamentoAgrupado extends Dictionary<LancamentoAgrupado> {
