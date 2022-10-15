@@ -4,19 +4,6 @@
   border-radius: 16px;
 }
 
-::ng-deep snack-bar-container.fi-toast-container {
-  position: absolute;
-  bottom: 90px;
-  right: 16px;
-  border-radius: 16px;
-
-  margin: 0px;
-  padding: 0px;
-  max-width: 450px;
-
-  background-color: red;
-}
-
 @mixin style-color-type-msg($selector, $cor) {
 
   :host fi-toast,

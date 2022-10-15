@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { lastDayOfMonth, startOfMonth } from 'date-fns';
 import { liveQuery } from 'dexie';
+import { take } from 'rxjs';
 import { db } from 'src/app/db/finance-db';
 
 import { GrupoContas, PlanoContas, Lancamento, MeioMovimentacao } from 'src/app/models/interfaces';
@@ -99,6 +100,9 @@ export class LancamentosComponent implements OnInit {
           }
         })
       .afterDismissed()
+      .pipe(
+        take(1)
+      )
       .subscribe((result: Lancamento) => {
         if (!result) return;
         result.naoRealizado = result.data.getTime() >= this.hoje.getTime();

@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { MatChip, MatChipList } from '@angular/material/chips';
+import { Subscription } from 'rxjs';
 import { GrupoContas, MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
 
 
@@ -18,11 +19,14 @@ interface FormAdd {
   templateUrl: './add-lancamento.component.html',
   styleUrls: ['./add-lancamento.component.scss']
 })
-export class AddLancamentoComponent implements OnInit, AfterViewInit {
+export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy {
   public today = new Date();
   public formAdd!: FormGroup<FormAdd>;
   public planosConta: PlanoContas[];
-  @ViewChild('chipList') matChipList!: MatChipList;
+  public meiosMovs: MeioMovimentacao[];
+
+  @ViewChild('chipList') private matChipList!: MatChipList;
+  private sub?: Subscription;
 
   constructor(
     private _bottomSheetRef: MatBottomSheetRef<AddLancamentoComponent>,
@@ -33,12 +37,17 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit {
         meiosMovimentacao: MeioMovimentacao[]
       }) {
     this.planosConta = data.planosConta;
+    this.meiosMovs = data.meiosMovimentacao;
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
   }
 
   ngAfterViewInit(): void {
     if (!this.matChipList) return;
 
-    this.matChipList.chipSelectionChanges.subscribe(() => {
+    this.sub = this.matChipList.chipSelectionChanges.subscribe(() => {
       const grupos: GrupoContas[] = [];
       if (this.matChipList.selected instanceof Array) {
         for (const item of this.matChipList.selected) {
@@ -63,12 +72,15 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit {
       desc: new FormControl<string | null | undefined>(null),
       meioMov: new FormControl<MeioMovimentacao | null | undefined>(null, Validators.required),
     });
-
-
   }
 
-  select(chip: MatChip) {
-    chip.toggleSelected();
+  avaliarMeioMov() {
+    if (this.formAdd.controls.planConta.value?.grupoContasId == 1) {
+      this.meiosMovs = this.data.meiosMovimentacao.filter(x => x.entrada);
+    }
+    else {
+      this.meiosMovs = this.data.meiosMovimentacao;
+    }
   }
 
   salvar() {

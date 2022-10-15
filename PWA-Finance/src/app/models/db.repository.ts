@@ -1,22 +1,23 @@
 import { Table } from 'dexie';
+import { take } from 'rxjs';
 import { db } from '../db/finance-db';
 import { ToastService } from '../services/toast.service';
 
 export abstract class DBRepository<T> {
-  table! : Table<T, number>;
+  table!: Table<T, number>;
 
-  constructor(private ts: ToastService){
+  constructor(private ts: ToastService) {
   }
 
   add(item: T, msg = 'adicionado..') {
     this.table
-    .add(item)
-    .then(() => {
-      this.ts.showSuccess(msg);
-    })
-    .catch((err) => {
-      this.ts.showError(err);
-    });
+      .add(item)
+      .then(() => {
+        this.ts.showSuccess(msg);
+      })
+      .catch((err) => {
+        this.ts.showError(err);
+      });
   }
 
   async delete(id: number, msg = 'removido..') {
@@ -28,11 +29,14 @@ export abstract class DBRepository<T> {
 
       this.table
         .delete(id)
-        .then(() =>{
+        .then(() => {
           this.ts
-          .showDismiss(msg)
-          .afterDismissed()
-          .subscribe((value) => {
+            .showDismiss(msg)
+            .afterDismissed()
+            .pipe(
+              take(1)
+            )
+            .subscribe((value) => {
               if (value.dismissedByAction) {
                 this.table.add(item);
               }
@@ -46,15 +50,15 @@ export abstract class DBRepository<T> {
 
   update(id: number, changes: {}, msg = 'atualizado..') {
     this.table
-    .update(id, changes)
-    .then((updated) => {
-      if (updated) {
-        if (msg.length > 0) this.ts.showSuccess(msg);
-      }
-      else this.ts.showWarning(`não foi encontrado o item com id: ${id} em ${this.table.name}`);
-    })
-    .catch((err) => {
-      this.ts.showError(err);
-    });
+      .update(id, changes)
+      .then((updated) => {
+        if (updated) {
+          if (msg.length > 0) this.ts.showSuccess(msg);
+        }
+        else this.ts.showWarning(`não foi encontrado o item com id: ${id} em ${this.table.name}`);
+      })
+      .catch((err) => {
+        this.ts.showError(err);
+      });
   }
 }
