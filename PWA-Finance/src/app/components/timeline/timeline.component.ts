@@ -1,17 +1,17 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { subDays, addDays } from 'date-fns';
+import { subDays, addDays, startOfDay } from 'date-fns';
 
 const QTD_DIAS = 3;
 
 @Component({
-  selector: 'fi-time-line',
+  selector: 'fi-timeline',
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
 
-  public hoje = new Date();
+  public hoje = startOfDay(new Date());
   public inicio = subDays(this.hoje, QTD_DIAS);
   public final = addDays(this.hoje, QTD_DIAS);
 
@@ -22,12 +22,11 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit(): void {
     let cursor = subDays(this.hoje, QTD_DIAS);
-    const final = addDays(this.hoje, QTD_DIAS);
+    const final = addDays(this.hoje, QTD_DIAS + 1);
 
     do {
       cursor = this.createRange(cursor);
     } while (cursor.toISOString() != final.toISOString())
-    this.createRange(addDays(cursor, 1));
   }
 
   private createRange(cursor: Date) {

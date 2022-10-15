@@ -16,8 +16,10 @@ import { AddLancamentoComponent } from '../add-lancamento/add-lancamento.compone
   styleUrls: ['./lancamentos.component.scss']
 })
 export class LancamentosComponent implements OnInit {
-  private hoje = new Date();
+  public hoje = new Date();
   public itensLancamentos = new ItemLancamentoAgrupado();
+  public mostrarSaldo = true;
+  public saldo = 0;
 
   public lancamentos$ = liveQuery(() => db.lancamentos.toArray());
   public planoContas$ = liveQuery(() => db.planoContas.toArray());
@@ -52,7 +54,9 @@ export class LancamentosComponent implements OnInit {
     this.lancamentos$.subscribe((lctos) => {
       this.lancamentos = lctos.filter(x =>
         this.filtrarLancamentosMes(x)
-        );
+      );
+
+      this.saldo = 0;
 
       this.lancamentos.map(lcto => {
         const meioMov = this.meiosMovimentacao.find(x => x.id === lcto.meioMovimentacaoId);
@@ -64,6 +68,9 @@ export class LancamentosComponent implements OnInit {
           const item = new LancamentoAgrupado(grupo);
           this.itensLancamentos.add(idGrupo, item);
         }
+
+        lcto.valor = this.lancamentoService.getValor(lcto, meioMov!);
+        if (!lcto.naoRealizado) this.saldo += lcto.valor;
 
         this.itensLancamentos[idGrupo]?.add({
           planoConta: planConta!,
@@ -119,13 +126,10 @@ export class LancamentosComponent implements OnInit {
   }
 
   lancamentoRealizado(id: number) {
-    const lancamento = this.lancamentos.find(x => x.id === id);
+    const lancamento = this.itensLancamentos.findLancamento(id);
     if (!lancamento) return;
 
     lancamento.naoRealizado = false;
     this.lancamentoService.update(id, { naoRealizado: false }, '');
-
-    const index =this.lancamentos.indexOf(lancamento);
-    this.lancamentos[index] = lancamento;
   }
 }

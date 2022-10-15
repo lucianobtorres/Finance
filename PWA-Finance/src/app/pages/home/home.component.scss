@@ -6,11 +6,7 @@ mat-card {
   overflow: hidden;
 }
 
-mat-icon {
-  color: $primary-color;
-}
-
-mat-card-content{
+mat-card-content {
   gap: 32px;
   display: flex;
   flex-direction: column;
@@ -18,4 +14,21 @@ mat-card-content{
   box-sizing: border-box;
   height: calc(100% - 64px);
   overflow: hidden;
+}
+
+.features {
+
+  mat-icon:not(.btn),
+  small {
+    color: $color-disabled;
+  }
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  span {
+    color: $primary-color;
+    font-weight: 500;
+  }
 }

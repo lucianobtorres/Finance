@@ -26,7 +26,7 @@
       <small>R$</small>
       <span
         [ngClass]="{ 'nao-realizado' : plan.lancamento.naoRealizado }"
-        class="valores">{{ plan.lancamento.valor | number : '1.2-2'}}
+        class="valores">{{ plan.lancamento.valor | number : '1.2-2' }}
       </span>
       <div class="actions">
       <button mat-icon-button (click)="removeLancamento.emit(plan.lancamento.id)">

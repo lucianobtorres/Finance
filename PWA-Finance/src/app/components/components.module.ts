@@ -15,6 +15,7 @@ import { LancamentosComponent } from './lancamentos/lancamentos.component';
 import { MenuComponent } from './menu/menu.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ToastComponent } from './toast/toast.component';
+import { ConvertWithFunctionPipe } from '../pipes/convert-with-function.pipe';
 
 export const components = [
   HomeComponent,
@@ -25,6 +26,7 @@ export const components = [
   MenuComponent,
   AddLancamentoComponent,
   ToastComponent,
+  ConvertWithFunctionPipe,
 ]
 
 @NgModule({

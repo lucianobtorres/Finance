@@ -6,7 +6,7 @@ export class ItemLancamentoAgrupado extends Dictionary<LancamentoAgrupado> {
     return this._values.sort((a, b) => (a.grupoConta.id ?? 0) - (b.grupoConta.id ?? 0));
   }
 
-  public lastLctoGrupo(key: number): Date | undefined {
+  lastLctoGrupo(key: number): Date | undefined {
     let itemNew: PlanoContasLancamento | undefined = undefined;
     for (const planoConta of this[key].planosContas) {
       const data = planoConta.lancamento.data;
@@ -19,6 +19,17 @@ export class ItemLancamentoAgrupado extends Dictionary<LancamentoAgrupado> {
     }
 
     return itemNew?.lancamento.data;
+  }
+
+  findLancamento(id: number) : Lancamento | undefined{
+    for (const items of this._values) {
+      const plContaLancto = items.find(x => x.lancamento.id === id);
+      if (plContaLancto) {
+        return plContaLancto.lancamento;
+      }
+    }
+
+    return undefined;
   }
 }
 
@@ -66,5 +77,9 @@ export class LancamentoAgrupado implements ILancamentoAgrupado {
 
     this.planosContas.splice(index, 1);
     return true;
+  }
+
+  find(predicate: (value: PlanoContasLancamento, index: number, obj: PlanoContasLancamento[]) => unknown, thisArg?: any): PlanoContasLancamento | undefined {
+    return this.planosContas.find(predicate);
   }
 }
