@@ -23,10 +23,8 @@
         </mat-form-field>
 
         <mat-chip-list #chipList="matChipList" multiple class="item-flex-l larger">
-          <mat-chip #chip="matChip"
-            *ngFor="let grupo of data.gruposConta"
-            (click)="chip.toggleSelected();"
-             [value]="grupo">
+          <mat-chip #chip="matChip" *ngFor="let grupo of data.gruposConta" (click)="chip.toggleSelected();"
+            [value]="grupo">
             <div class="chip">
               <mat-icon>
                 {{grupo.icone}}
@@ -44,16 +42,22 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <div class="item-flex-l movs">
+          <mat-form-field class="mov">
+            <mat-label>Meio Movimentação</mat-label>
+            <mat-select [formControl]="formAdd.controls.meioMov" (opened)="avaliarMeioMov()">
+              <mat-option *ngFor="let item of meiosMovs" [value]="item">
+                {{item.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-        <mat-form-field class="item-flex-l">
-          <mat-label>Meio Movimentação</mat-label>
-          <mat-select [formControl]="formAdd.controls.meioMov" (opened)="avaliarMeioMov()">
-            <mat-option *ngFor="let item of meiosMovs" [value]="item">
-              {{item.title}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
+          <mat-form-field class="vezes"
+            [ngClass]="{ 'not-show' : formAdd.controls.meioMov.value !== data.meiosMovimentacao[0] }">
+            <mat-label>Vezes</mat-label>
+            <input inputmode="decimal" type="number" matInput [formControl]="formAdd.controls.vezes">
+          </mat-form-field>
+        </div>
         <mat-form-field class="item-flex-l larger">
           <mat-label>Descrição</mat-label>
           <textarea matInput [formControl]="formAdd.controls.desc"></textarea>

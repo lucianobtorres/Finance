@@ -12,6 +12,7 @@ interface FormAdd {
   desc: FormControl<string | null | undefined>;
   data: FormControl<Date | null | undefined>;
   valor: FormControl<number | null | undefined>;
+  vezes: FormControl<number | null | undefined>;
 }
 
 @Component({
@@ -71,6 +72,7 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
       planConta: new FormControl<PlanoContas | null | undefined>(null, Validators.required),
       desc: new FormControl<string | null | undefined>(null),
       meioMov: new FormControl<MeioMovimentacao | null | undefined>(null, Validators.required),
+      vezes: new FormControl<number | null | undefined>(1),
     });
   }
 
@@ -104,7 +106,8 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
       data: value.data,
       desc: value.desc,
       valor: Number(value.valor),
-      meioMovimentacaoId: value.meioMov.id
+      meioMovimentacaoId: value.meioMov.id,
+      vezes: value.meioMov.id === this.data.meiosMovimentacao[0].id ? value.vezes : 1
     });
   }
 

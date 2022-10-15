@@ -5,7 +5,7 @@ import { liveQuery } from 'dexie';
 import { take } from 'rxjs';
 import { db } from 'src/app/db/finance-db';
 
-import { GrupoContas, PlanoContas, Lancamento, MeioMovimentacao } from 'src/app/models/interfaces';
+import { GrupoContas, PlanoContas, Lancamento, MeioMovimentacao, LancamentoToService } from 'src/app/models/interfaces';
 import { ItemLancamentoAgrupado, LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
 import { LancamentoService } from 'src/app/services/lancamento.service';
 
@@ -103,10 +103,9 @@ export class LancamentosComponent implements OnInit {
       .pipe(
         take(1)
       )
-      .subscribe((result: Lancamento) => {
+      .subscribe((result: LancamentoToService) => {
         if (!result) return;
-        result.naoRealizado = result.data.getTime() >= this.hoje.getTime();
-        this.lancamentoService.add(result, 'Lancamento adicionado');
+        this.lancamentoService.add(result);
       });
   }
 

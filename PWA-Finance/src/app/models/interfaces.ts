@@ -18,6 +18,17 @@ export interface MeioMovimentacao {
   entrada: boolean;
 }
 
+export interface LancamentoToService {
+  id?: number;
+  planoContasId: number | undefined;
+  meioMovimentacaoId: number | undefined;
+  data: Date;
+  desc: string;
+  valor: number;
+  vezes: number;
+  naoRealizado?: boolean;
+}
+
 export interface Lancamento {
   id?: number;
   planoContasId: number | undefined;

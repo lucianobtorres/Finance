@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { db } from '../db/finance-db';
-import { Lancamento, MeioMovimentacao } from '../models/interfaces';
+import { Lancamento, LancamentoToService, MeioMovimentacao } from '../models/interfaces';
 import { DBRepository } from '../models/db.repository';
 import { ToastService } from './toast.service';
+import { addMonths, startOfDay } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,19 @@ export class LancamentoService extends DBRepository<Lancamento> {
     this.table = db.lancamentos;
   }
 
-  getValor(lcto: Lancamento, mv: MeioMovimentacao) : number {
+  getValor(lcto: Lancamento, mv: MeioMovimentacao): number {
     return (!mv.entrada)
       ? lcto.valor * -1
-      : lcto.valor ;
+      : lcto.valor;
+  }
+
+  override add(item: LancamentoToService) {
+    const hoje = startOfDay(new Date()).getTime();
+
+    for (let index = 0; index < item.vezes; index++) {
+      item.naoRealizado = item.data.getTime() >= hoje;
+      super.add(item, 'Lancamento adicionado');
+      item.data = addMonths(item.data, 1);
+    }
   }
 }

@@ -37,13 +37,13 @@ mat-card-content {
   gap: 16px;
 }
 
-.item-flex-s{
+.item-flex-s {
   flex: 1;
   min-width: 140px;
   align-self: center;
 }
 
-.item-flex-l{
+.item-flex-l {
   flex: 2;
   min-width: fit-content;
   align-self: center;
@@ -64,4 +64,21 @@ mat-card-content {
 
 .mat-chip-list {
   width: 99%;
+}
+
+.movs {
+  display: flex;
+  gap: 16px;
+
+  .vezes {
+    max-width: 64px;
+  }
+}
+
+.mov {
+  width: 100%;
+}
+
+.not-show {
+  display: none;
 }
