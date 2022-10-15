@@ -5,12 +5,12 @@
   overflow: hidden;
 }
 
-div.container-button{
+div.container-button {
   display: flex;
   margin-inline: auto;
   align-self: center;
 
-  #salvar{
+  #salvar {
     margin-inline: auto;
     margin-bottom: 20px;
     width: 60%;
@@ -27,22 +27,33 @@ mat-card-content {
   height: auto;
 }
 
-form {
-  height: 100%;
-  overflow: auto;
+:host .larger {
+  flex-basis: 100%;
 }
 
-.header{
+.form-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.item-flex-s{
+  flex: 1;
+  min-width: 140px;
+  align-self: center;
+}
+
+.item-flex-l{
+  flex: 2;
+  min-width: fit-content;
+  align-self: center;
+}
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $primary-color;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
 }
 
 .chip {

@@ -3,6 +3,8 @@ import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef } from '@angular/materia
 import { ToastComponent } from '../components/toast/toast.component';
 import { MessageData, TypeToast } from '../models/message-data';
 
+export const TOAST_DURATION = 5000;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,7 @@ export class ToastService {
     const config: MatSnackBarConfig = {
       panelClass: ['fi-toast-container'],
       data,
-      duration: 5000,
+      duration: TOAST_DURATION,
       verticalPosition: 'top',
       horizontalPosition: 'right'
     };

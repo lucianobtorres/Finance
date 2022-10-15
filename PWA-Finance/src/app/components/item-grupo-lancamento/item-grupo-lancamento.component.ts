@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { endOfToday, startOfToday } from 'date-fns';
 import { PlanoContasLancamento } from 'src/app/models/interfaces';
 import { LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
 
@@ -12,12 +13,8 @@ export class ItemGrupoLancamentoComponent {
   @Output() public removeLancamento = new EventEmitter<number>();
   @Output() public realizar = new EventEmitter<number>();
 
-  public hoje: Date;
-
-  constructor() {
-    this.hoje = new Date();
-    this.hoje.setHours(0, 0, 0, 0);
-  }
+  public inicioHoje = startOfToday();
+  public finalHoje = endOfToday();
 
   getLancamentos(): PlanoContasLancamento[] {
     return this.itemGrupo.planosContas.sort((a, b) => a.lancamento.data.getTime() - b.lancamento.data.getTime());

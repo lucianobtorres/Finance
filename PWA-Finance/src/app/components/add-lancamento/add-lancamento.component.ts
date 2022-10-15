@@ -1,10 +1,7 @@
-import { COMMA, ENTER, X } from '@angular/cdk/keycodes';
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { MatChip, MatChipInputEvent, MatChipList } from '@angular/material/chips';
-import { map, Observable, startWith } from 'rxjs';
+import { MatChip, MatChipList } from '@angular/material/chips';
 import { GrupoContas, MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
 
 
@@ -22,6 +19,7 @@ interface FormAdd {
   styleUrls: ['./add-lancamento.component.scss']
 })
 export class AddLancamentoComponent implements OnInit, AfterViewInit {
+  public today = new Date();
   public formAdd!: FormGroup<FormAdd>;
   public planosConta: PlanoContas[];
   @ViewChild('chipList') matChipList!: MatChipList;
@@ -38,7 +36,6 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.matChipList)
     if (!this.matChipList) return;
 
     this.matChipList.chipSelectionChanges.subscribe(() => {

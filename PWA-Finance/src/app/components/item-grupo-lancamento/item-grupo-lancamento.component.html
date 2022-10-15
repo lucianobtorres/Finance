@@ -17,7 +17,7 @@
   <div class="itens-financeiros" *ngIf="panel.expanded">
     <ng-container *ngFor="let plan of getLancamentos()">
       <span
-        [ngClass]="{ 'nao-realizado' : plan.lancamento.data.getTime() >= hoje.getTime() }"
+        [ngClass]="{ 'nao-realizado' : plan.lancamento.data.getTime() >= inicioHoje.getTime() }"
         >
         {{ plan.lancamento.data | date:'dd-MMM'}}
       </span>
@@ -32,7 +32,7 @@
       <button mat-icon-button (click)="removeLancamento.emit(plan.lancamento.id)">
         <mat-icon>clear</mat-icon>
       </button>
-      <button *ngIf="plan.lancamento.naoRealizado && plan.lancamento.data.getTime() <= hoje.getTime()"
+      <button *ngIf="plan.lancamento.naoRealizado && plan.lancamento.data.getTime() <= finalHoje.getTime()"
         mat-icon-button
         (click)="realizar.emit(plan.lancamento.id)">
         <mat-icon>task_alt</mat-icon>

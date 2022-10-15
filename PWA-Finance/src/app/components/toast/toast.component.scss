@@ -1,22 +1,28 @@
 @use 'theme-variables' as *;
 
+:host {
+  border-radius: 16px;
+}
+
 ::ng-deep snack-bar-container.fi-toast-container {
   position: absolute;
-  top: $toolbar-height;
-  right: 0px;
+  bottom: 90px;
+  right: 16px;
+  border-radius: 16px;
 
   margin: 0px;
   padding: 0px;
-  max-width: 400px;
+  max-width: 450px;
 
-  background-color: $color-background-default;
+  background-color: red;
 }
 
 @mixin style-color-type-msg($selector, $cor) {
 
+  :host fi-toast,
   #{$selector},
   #{$selector} mat-icon:not(.icon-close) {
-    color: $cor;
+    background-color: $cor;
 
     .side-bar-color {
       background-color: $cor;
@@ -28,19 +34,23 @@
 @include style-color-type-msg('.fi-msg-warning', $color-status-pendent);
 @include style-color-type-msg('.fi-msg-error', $color-status-urgent);
 
+.base {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
 .toast-main {
   display: flex;
   gap: 16px;
   padding-right: 16px;
-  border-radius: 4px;
-  overflow: hidden;
 }
 
 .side-bar-color {
   min-width: 6px;
 }
 
-mat-icon, fi-button-icon {
+mat-icon,
+fi-button-icon {
   margin-block: auto;
   min-width: 24px;
 }
@@ -53,6 +63,6 @@ mat-icon, fi-button-icon {
   padding-block: 12px;
 }
 
-.mat-small {
-  color: $color-medium-emphasis;
+.icon-close {
+  margin: auto;
 }

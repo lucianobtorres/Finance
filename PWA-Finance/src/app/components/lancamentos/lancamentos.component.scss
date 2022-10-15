@@ -6,10 +6,14 @@
 .categorias {
   gap: 16px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .categoria-content {
   overflow: auto;
   height: 85%;
+}
+
+fi-item-grupo-lancamento {
+  flex: 1;
 }

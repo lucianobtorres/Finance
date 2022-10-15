@@ -40,6 +40,10 @@ mat-expansion-panel-header.categoria-container,
   background: rgba(0, 0, 0, 0.04);
 }
 
+:host .mat-expansion-panel-content{
+  width: 100%;
+}
+
 .itens-financeiros {
   gap: 8px;
   display: grid;
