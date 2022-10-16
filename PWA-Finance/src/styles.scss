@@ -52,3 +52,7 @@ snack-bar-container.fi-toast-container {
   height: calc(100vh - 64px);
   overflow: hidden;
 }
+
+div.mat-expansion-panel-body{
+  overflow: auto;
+}
