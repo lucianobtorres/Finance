@@ -1,9 +1,9 @@
 @use "theme-variables" as *;
 
-mat-card {
-  box-sizing: border-box;
-  height: calc(100vh - 64px);
-  overflow: hidden;
+.host {
+  padding: 8px;
+  overflow: auto;
+  height: 90%;
 }
 
 mat-card-content {
@@ -12,8 +12,15 @@ mat-card-content {
   flex-direction: column;
 
   box-sizing: border-box;
-  height: calc(100% - 64px);
-  overflow: auto;
+  height: 100%;
+}
+
+
+.categorias {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .categoria-container {
@@ -45,7 +52,7 @@ mat-card-content {
   }
 }
 .mat-expansion-panel {
-  overflow: initial;
+  overflow: unset;
 }
 
 mat-expansion-panel-header.categoria-container,

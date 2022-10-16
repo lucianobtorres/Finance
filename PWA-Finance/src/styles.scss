@@ -46,3 +46,9 @@ snack-bar-container.fi-toast-container {
   width: calc(100% - 32px) !important;
   right: 0 !important;
  }
+
+ mat-card {
+  box-sizing: border-box;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}

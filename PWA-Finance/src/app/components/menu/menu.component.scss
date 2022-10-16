@@ -33,7 +33,7 @@ button:not(.active-menu-item) {
   justify-content: center;
 
   small {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -42,5 +42,6 @@ button:not(.active-menu-item) {
 }
 
 button {
-  margin: 8px;
+  margin: auto;
+  padding: 0;
 }

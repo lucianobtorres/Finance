@@ -1,17 +1,13 @@
 :host {
   padding: 8px;
   overflow: auto;
+  height: auto;
 }
 
 .categorias {
   gap: 16px;
   display: flex;
-  flex-wrap: wrap;
-}
-
-.categoria-content {
-  overflow: auto;
-  height: 85%;
+  flex-direction: column;
 }
 
 fi-item-grupo-lancamento {
