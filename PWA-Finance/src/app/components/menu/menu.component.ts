@@ -11,11 +11,18 @@ export class MenuComponent {
       location: 'home',
       label: 'Lancamentos',
       icon: 'currency_exchange'
-    }, {
+    },
+    {
       location: 'extrato',
+      label: 'Extrato',
+      icon: 'receipt_long'
+    },
+    {
+      location: 'grafico',
       label: 'Gráficos',
       icon: 'trending_up'
-    }, {
+    },
+    {
       location: 'configuracoes',
       label: 'Configurações',
       icon: 'settings'

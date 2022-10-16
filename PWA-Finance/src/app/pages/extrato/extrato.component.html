@@ -20,19 +20,17 @@
 
       <div class="itens-financeiros">
         <ng-container *ngFor="let value of item.value">
-          <button mat-icon-button (click)="editarLancamento(value.lcto)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <span [ngClass]="{
+          <span class="click" (click)="editarLancamento(value.lcto)"
+          [ngClass]="{
           'nao-realizado':
           value.lcto.data.getTime() >= inicioHoje.getTime()
         }">
-            {{ value.lcto.data | date: "dd-MMM" }}
+            {{ value.lcto.data | date: "dd" }}
           </span>
-          <small>{{ value.grupo.title}}</small>
-          <small>{{ value.planConta.title }}</small>
-          <small>{{ value.lcto.desc }}</small>
-          <span [ngClass]="{ 'nao-realizado': value.lcto.naoRealizado }" class="valores">{{ value.lcto.valor | currency
+          <mat-icon class="click" (click)="editarLancamento(value.lcto)">{{ value.grupo.icone}}</mat-icon>
+          <small class="click" (click)="editarLancamento(value.lcto)">{{ value.planConta.title }}</small>
+          <small class="click" (click)="editarLancamento(value.lcto)">{{ value.lcto.desc }}</small>
+          <span (click)="editarLancamento(value.lcto)" [ngClass]="{ 'nao-realizado': value.lcto.naoRealizado }" class="valores click">{{ value.lcto.valor | currency
             }}
           </span>
           <div class="actions">

@@ -66,7 +66,7 @@ mat-expansion-panel-header.categoria-container,
 .itens-financeiros {
   gap: 8px;
   display: grid;
-  grid-template-columns: repeat(3, min-content) repeat(2, auto) max-content min-content;
+  grid-template-columns: repeat(2, min-content) repeat(2, auto) max-content min-content;
   margin-block: 16px;
   align-items: center;
 
@@ -79,6 +79,10 @@ mat-expansion-panel-header.categoria-container,
   }
 }
 
+.click:hover {
+  cursor: pointer;
+  background-color: rgba($primary-color, 10%);
+}
 mat-icon {
   color: $color-medium-emphasis;
 }
