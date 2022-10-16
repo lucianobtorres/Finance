@@ -47,7 +47,7 @@ mat-expansion-panel-header.categoria-container,
 .itens-financeiros {
   gap: 8px;
   display: grid;
-  grid-template-columns: max-content repeat(2, auto) repeat(2,max-content) min-content;
+  grid-template-columns: min-content max-content repeat(2, auto) repeat(2,max-content) min-content;
   margin-block: 16px;
   align-items: center;
 

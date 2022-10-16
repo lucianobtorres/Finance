@@ -21,7 +21,7 @@ export class ItemLancamentoAgrupado extends Dictionary<LancamentoAgrupado> {
     return itemNew?.lancamento.data;
   }
 
-  findLancamento(id: number) : Lancamento | undefined{
+  findLancamento(id: number): Lancamento | undefined {
     for (const items of this._values) {
       const plContaLancto = items.find(x => x.lancamento.id === id);
       if (plContaLancto) {
@@ -30,6 +30,24 @@ export class ItemLancamentoAgrupado extends Dictionary<LancamentoAgrupado> {
     }
 
     return undefined;
+  }
+
+  removeLancamento(id: number) {
+    for (const items of this._values) {
+      const plContaLancto = items.find(x => x.lancamento.id === id);
+
+      if (plContaLancto) {
+        const result = items.remove(plContaLancto.lancamento);
+        const idGrupo = plContaLancto.planoConta.grupoContasId ?? 0;
+
+        if (this.containsKey(idGrupo) && this[idGrupo].planosContas.length === 0) {
+          this.remove(idGrupo);
+        };
+
+        return result;
+      }
+    }
+    return false;
   }
 }
 

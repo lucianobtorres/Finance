@@ -88,7 +88,9 @@ export class LancamentosComponent implements OnInit {
       lcto.data <= lastDayOfMonth(this.hoje);
   }
 
-  addLancamento() {
+  addLancamento(dia?: Date) {
+    let addMais = false;
+
     this.bottomSheet
       .open(
         AddLancamentoComponent,
@@ -96,36 +98,66 @@ export class LancamentosComponent implements OnInit {
           data: {
             gruposConta: this.gruposConta,
             planosConta: this.planosConta,
-            meiosMovimentacao: this.meiosMovimentacao
+            meiosMovimentacao: this.meiosMovimentacao,
+            dia
           }
         })
       .afterDismissed()
       .pipe(
         take(1)
       )
-      .subscribe((result: LancamentoToService) => {
-        if (!result) return;
-        this.lancamentoService.add(result);
+      .subscribe({
+        next: (result: { lancamento: LancamentoToService, multiAdd: boolean }) => {
+          if (!result) return;
+          this.lancamentoService.add(result.lancamento);
+          addMais = result.multiAdd;
+          dia = result.lancamento.data;
+        },
+        complete: () => {
+          if (addMais) this.addLancamento(dia);
+        }
       });
   }
 
+  deleteFromController(id: number) {
+    if (!this.itensLancamentos.removeLancamento(id)) return;
+
+    const index = this.lancamentos.findIndex(x => x.id === id);
+    this.lancamentos.splice(index, 1);
+  }
+
   deleteLancamento(id: number) {
-    const lancamento = this.lancamentos.find(x => x.id === id);
+    this.deleteFromController(id);
+    this.lancamentoService.delete(id, 'Lancamento removido');
+  }
+
+  editarLancamento(id: number) {
+    const lancamento = this.itensLancamentos.findLancamento(id);
     if (!lancamento) return;
 
-    const planConta = this.planosConta.find(x => x.id === lancamento.planoContasId);
-    if (!planConta) return;
+    this.bottomSheet
+      .open(
+        AddLancamentoComponent,
+        {
+          data: {
+            gruposConta: this.gruposConta,
+            planosConta: this.planosConta,
+            meiosMovimentacao: this.meiosMovimentacao,
+            lancamento
+          }
+        })
+      .afterDismissed()
+      .pipe(
+        take(1)
+      )
+      .subscribe({
+        next: (result: { lancamento: LancamentoToService }) => {
+          if (!result || !result.lancamento) return;
 
-    const idGrupo = planConta.grupoContasId ?? 0;
-    if (!this.itensLancamentos.containsKey(idGrupo)) return;
-
-    if (!this.itensLancamentos[idGrupo].remove(lancamento)) return;
-
-    if (this.itensLancamentos[idGrupo].planosContas.length === 0) {
-      this.itensLancamentos.remove(idGrupo);
-    }
-
-    this.lancamentoService.delete(id, 'Lancamento removido');
+          this.deleteFromController(id);
+          this.lancamentoService.update(id, result.lancamento, 'Lancamento atualizado');
+        }
+      });
   }
 
   lancamentoRealizado(id: number) {

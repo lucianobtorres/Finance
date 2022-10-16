@@ -9,9 +9,11 @@ import { LancamentoAgrupado } from 'src/app/models/item-lancamento-agrupado';
   styleUrls: ['./item-grupo-lancamento.component.scss']
 })
 export class ItemGrupoLancamentoComponent {
-  @Input() itemGrupo!: LancamentoAgrupado;
   @Output() public removeLancamento = new EventEmitter<number>();
+  @Output() public editarLancamento = new EventEmitter<number>();
   @Output() public realizar = new EventEmitter<number>();
+
+  @Input() itemGrupo!: LancamentoAgrupado;
 
   public inicioHoje = startOfToday();
   public finalHoje = endOfToday();

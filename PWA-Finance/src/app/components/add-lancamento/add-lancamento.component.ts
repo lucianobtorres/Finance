@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { MatChip, MatChipList } from '@angular/material/chips';
 import { Subscription } from 'rxjs';
-import { GrupoContas, MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
+import { GrupoContas, Lancamento, MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
 
 
 interface FormAdd {
@@ -26,6 +26,10 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
   public planosConta: PlanoContas[];
   public meiosMovs: MeioMovimentacao[];
 
+  public tipo: string;
+  public btnTexto: string;
+  public multiAdd = false;
+
   @ViewChild('chipList') private matChipList!: MatChipList;
   private sub?: Subscription;
 
@@ -36,9 +40,14 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
         gruposConta: GrupoContas[],
         planosConta: PlanoContas[],
         meiosMovimentacao: MeioMovimentacao[]
+        lancamento?: Lancamento
+        dia?: Date
       }) {
     this.planosConta = data.planosConta;
     this.meiosMovs = data.meiosMovimentacao;
+    this.tipo = data.lancamento ? 'Editar' : 'Adicionar';
+    this.btnTexto = data.lancamento ? 'Salvar' : 'Adicionar';
+    this.multiAdd = !!data.dia;
   }
 
   ngOnDestroy(): void {
@@ -66,17 +75,23 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngOnInit(): void {
+    const planConta = this.planosConta.find(x => x.id === this.data.lancamento?.planoContasId);
+    const meioMoviment = this.meiosMovs.find(x => x.id === this.data.lancamento?.meioMovimentacaoId);
+    const valor = this.data.lancamento ? Math.abs(this.data.lancamento?.valor) : null;
+    const dia = this.data.lancamento?.data ?? this.data.dia ?? new Date();
+
     this.formAdd = new FormGroup({
-      data: new FormControl<Date | null | undefined>(new Date(), Validators.required),
-      valor: new FormControl<number | null | undefined>(null, Validators.required),
-      planConta: new FormControl<PlanoContas | null | undefined>(null, Validators.required),
-      desc: new FormControl<string | null | undefined>(null),
-      meioMov: new FormControl<MeioMovimentacao | null | undefined>(null, Validators.required),
+      data: new FormControl<Date | null | undefined>(dia, Validators.required),
+      valor: new FormControl<number | null | undefined>(valor, Validators.required),
+      planConta: new FormControl<PlanoContas | null | undefined>(planConta, Validators.required),
+      desc: new FormControl<string | null | undefined>(this.data.lancamento?.desc),
+      meioMov: new FormControl<MeioMovimentacao | null | undefined>(meioMoviment, Validators.required),
       vezes: new FormControl<number | null | undefined>(1),
     });
   }
 
   avaliarMeioMov() {
+    this.formAdd.controls.meioMov.reset();
     if (this.formAdd.controls.planConta.value?.grupoContasId == 1) {
       this.meiosMovs = this.data.meiosMovimentacao.filter(x => x.entrada);
     }
@@ -102,12 +117,15 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
     }
 
     this._bottomSheetRef.dismiss({
-      planoContasId: value.planConta.id,
-      data: value.data,
-      desc: value.desc,
-      valor: Number(value.valor),
-      meioMovimentacaoId: value.meioMov.id,
-      vezes: value.meioMov.id === this.data.meiosMovimentacao[0].id ? value.vezes : 1
+      lancamento: {
+        planoContasId: value.planConta.id,
+        data: value.data,
+        desc: value.desc,
+        valor: Number(value.valor),
+        meioMovimentacaoId: value.meioMov.id,
+        vezes: value.meioMov.id === this.data.meiosMovimentacao[0].id ? value.vezes : 1
+      },
+      multiAdd: this.multiAdd
     });
   }
 

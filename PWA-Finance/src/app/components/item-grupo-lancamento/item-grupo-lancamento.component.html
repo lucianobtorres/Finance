@@ -1,5 +1,9 @@
-<mat-expansion-panel #panel="matExpansionPanel" class="mat-elevation-z0" hideToggle>
-  <mat-expansion-panel-header  class="mat-elevation-z0 categoria-container">
+<mat-expansion-panel
+  #panel="matExpansionPanel"
+  class="mat-elevation-z0"
+  hideToggle
+>
+  <mat-expansion-panel-header class="mat-elevation-z0 categoria-container">
     <div class="item-categoria">
       <div class="categoria">
         <mat-icon color="primary"> {{ itemGrupo.grupoConta.icone }} </mat-icon>
@@ -8,36 +12,58 @@
       <div class="soma">
         <div>
           <small>R$ </small>
-          <span>{{ itemGrupo.valor | number : '1.2-2' }}</span>
+          <span>{{ itemGrupo.valor | number: "1.2-2" }}</span>
         </div>
-        <small>{{ itemGrupo.lastDate | date:'EEE' }} às {{ itemGrupo.lastDate | date:'HH:mm' }}</small>
+        <small
+          >{{ itemGrupo.lastDate | date: "EEE" }} às
+          {{ itemGrupo.lastDate | date: "HH:mm" }}</small
+        >
       </div>
     </div>
   </mat-expansion-panel-header>
+
   <div class="itens-financeiros" *ngIf="panel.expanded">
     <ng-container *ngFor="let plan of getLancamentos()">
+      <button
+        mat-icon-button
+        (click)="editarLancamento.emit(plan.lancamento.id)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
       <span
-        [ngClass]="{ 'nao-realizado' : plan.lancamento.data.getTime() >= inicioHoje.getTime() }"
-        >
-        {{ plan.lancamento.data | date:'dd-MMM'}}
+        [ngClass]="{
+          'nao-realizado':
+            plan.lancamento.data.getTime() >= inicioHoje.getTime()
+        }"
+      >
+        {{ plan.lancamento.data | date: "dd-MMM" }}
       </span>
-      <small>{{ plan.planoConta.title}}</small>
+      <small>{{ plan.planoConta.title }}</small>
       <small>{{ plan.lancamento.desc }}</small>
       <small>R$</small>
       <span
-        [ngClass]="{ 'nao-realizado' : plan.lancamento.naoRealizado }"
-        class="valores">{{ plan.lancamento.valor | number : '1.2-2' }}
+        [ngClass]="{ 'nao-realizado': plan.lancamento.naoRealizado }"
+        class="valores"
+        >{{ plan.lancamento.valor | number: "1.2-2" }}
       </span>
       <div class="actions">
-      <button mat-icon-button (click)="removeLancamento.emit(plan.lancamento.id)">
-        <mat-icon>clear</mat-icon>
-      </button>
-      <button *ngIf="plan.lancamento.naoRealizado && plan.lancamento.data.getTime() <= finalHoje.getTime()"
-        mat-icon-button
-        (click)="realizar.emit(plan.lancamento.id)">
-        <mat-icon>task_alt</mat-icon>
-      </button>
-    </div>
+        <button
+          mat-icon-button
+          (click)="removeLancamento.emit(plan.lancamento.id)"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button
+          *ngIf="
+            plan.lancamento.naoRealizado &&
+            plan.lancamento.data.getTime() <= finalHoje.getTime()
+          "
+          mat-icon-button
+          (click)="realizar.emit(plan.lancamento.id)"
+        >
+          <mat-icon>task_alt</mat-icon>
+        </button>
+      </div>
     </ng-container>
   </div>
 </mat-expansion-panel>
