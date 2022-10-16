@@ -12,7 +12,7 @@ export class MenuComponent {
       label: 'Lancamentos',
       icon: 'currency_exchange'
     }, {
-      location: 'graficos',
+      location: 'extrato',
       label: 'Gráficos',
       icon: 'trending_up'
     }, {

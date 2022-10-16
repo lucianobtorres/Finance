@@ -1,0 +1,64 @@
+<mat-expansion-panel
+
+  *ngFor="let item of map | keyvalue"
+  #panel="matExpansionPanel"
+  class="mat-elevation-z0"
+>
+  <mat-expansion-panel-header class="mat-elevation-z0 categoria-container">
+    <div class="item-categoria">
+      <div class="categoria">
+        <fi-header>
+          {{ getData(item.key) | date:'MMMM' }}
+          <ng-container subtitulo>
+            {{ getData(item.key) | date:'yyyy' }}
+          </ng-container>
+        </fi-header>
+      </div>
+    </div>
+  </mat-expansion-panel-header>
+
+  <div class="itens-financeiros">
+    <ng-container *ngFor="let value of item.value">
+      <button
+        mat-icon-button
+        (click)="editarLancamento(value.lcto)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <span
+        [ngClass]="{
+          'nao-realizado':
+          value.lcto.data.getTime() >= inicioHoje.getTime()
+        }"
+      >
+        {{ value.lcto.data | date: "dd-MMM" }}
+      </span>
+      <small>{{ value.grupo.title}}</small>
+      <small>{{ value.planConta.title }}</small>
+      <small>{{ value.lcto.desc }}</small>
+      <span
+        [ngClass]="{ 'nao-realizado': value.lcto.naoRealizado }"
+        class="valores"
+        >{{ value.lcto.valor | currency }}
+      </span>
+      <div class="actions">
+        <button
+          mat-icon-button
+          (click)="deleteLancamento(value.lcto)"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button
+          *ngIf="
+          value.lcto.naoRealizado &&
+          value.lcto.data.getTime() <= finalHoje.getTime()
+          "
+          mat-icon-button
+          (click)="lancamentoRealizado(value.lcto)"
+        >
+          <mat-icon>task_alt</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</mat-expansion-panel>

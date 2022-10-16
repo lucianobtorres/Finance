@@ -20,8 +20,8 @@ export abstract class DBRepository<T> {
       });
   }
 
-  async delete(id: number, msg = 'removido..') {
-
+  async delete(id: number, msg = 'removido..', dismiss?: boolean) {
+    const dism = dismiss ?? true;
     const item = await this.table.where('id').equals(id).first();
     if (!item) return;
 
@@ -30,17 +30,28 @@ export abstract class DBRepository<T> {
       this.table
         .delete(id)
         .then(() => {
-          this.ts
-            .showDismiss(msg)
-            .afterDismissed()
-            .pipe(
-              take(1)
-            )
-            .subscribe((value) => {
-              if (value.dismissedByAction) {
-                this.table.add(item);
-              }
-            });
+          if (dism) {
+            this.ts
+              .showDismiss(msg)
+              .afterDismissed()
+              .pipe(
+                take(1)
+              )
+              .subscribe((value) => {
+                if (value.dismissedByAction) {
+                  this.table.add(item);
+                }
+              });
+          }
+          else {
+            this.ts
+              .showSuccess(msg)
+              .afterDismissed()
+              .pipe(
+                take(1)
+              )
+              .subscribe((value) => {});
+          }
         })
         .catch(e => {
           this.ts.showError(e);

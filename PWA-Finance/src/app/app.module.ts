@@ -11,15 +11,19 @@ import { environment } from '../environments/environment';
 
 import { ComponentsModule } from './components/components.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { ExtratoComponent } from './pages/extrato/extrato.component';
+import { MaterialModule } from './module/material.module';
 
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     AppComponent,
+    ExtratoComponent,
   ],
   imports: [
     ComponentsModule,
+    MaterialModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
