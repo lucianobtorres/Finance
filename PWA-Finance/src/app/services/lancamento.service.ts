@@ -22,11 +22,15 @@ export class LancamentoService extends DBRepository<Lancamento> {
 
   override add(item: LancamentoToService) {
     const hoje = startOfDay(new Date()).getTime();
+    let index = 0;
 
-    for (let index = 0; index < item.vezes; index++) {
+    do {
       item.naoRealizado = item.data.getTime() >= hoje;
       super.add(item, 'Lancamento adicionado');
-      item.data = addMonths(item.data, 1);
-    }
+
+      if (++index < item.vezes) {
+        item.data = addMonths(item.data, 1);
+      }
+    } while (index < item.vezes);
   }
 }

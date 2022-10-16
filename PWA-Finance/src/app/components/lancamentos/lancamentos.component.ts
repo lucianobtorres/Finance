@@ -90,7 +90,7 @@ export class LancamentosComponent implements OnInit {
 
   addLancamento(dia?: Date) {
     let addMais = false;
-
+console.log(dia)
     this.bottomSheet
       .open(
         AddLancamentoComponent,
@@ -112,9 +112,10 @@ export class LancamentosComponent implements OnInit {
           this.lancamentoService.add(result.lancamento);
           addMais = result.multiAdd;
           dia = result.lancamento.data;
+          console.log(result.lancamento.data)
         },
         complete: () => {
-          if (addMais) this.addLancamento(dia);
+          if (addMais) this.addLancamento(new Date(dia ?? new Date()));
         }
       });
   }

@@ -54,7 +54,7 @@ export class ExtratoComponent implements OnInit {
     });
 
     this.lancamentos$.subscribe((lctos) => {
-      this.lancamentos = lctos.sort((a, b) => a.data.getTime() - b.data.getTime());
+      this.lancamentos = lctos.sort((b, a) => a.data.getTime() - b.data.getTime());
 
       this.lancamentos.map(lcto => {
         const meioMov = this.meiosMovimentacao.find(x => x.id === lcto.meioMovimentacaoId);
