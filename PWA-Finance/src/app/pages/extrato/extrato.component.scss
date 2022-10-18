@@ -1,8 +1,10 @@
 @use "theme-variables" as *;
 
+fi-header .mat-card-title{
+  text-transform: none;
+}
 
 mat-card-content {
-  gap: 32px;
   display: flex;
   flex-direction: column;
 
@@ -37,16 +39,22 @@ mat-expansion-panel-header.categoria-container,
 .itens-financeiros {
   gap: 8px;
   display: grid;
-  grid-template-columns: repeat(2, min-content) repeat(2, auto) max-content min-content;
-  margin-block: 16px;
+  grid-template-columns: min-content repeat(2, auto) max-content min-content;
   align-items: center;
+  padding: 16px;
+  margin-inline: 16px;
+  margin-block: 16px;
 
-  span:not(.nao-realizado) {
+  span.valores:not(.nao-realizado) {
     color: $primary-color;
   }
 
   span.valores{
     justify-self: flex-end;
+  }
+
+  small{
+    color: $color-disabled;
   }
 }
 
@@ -58,6 +66,10 @@ mat-icon {
   color: $color-medium-emphasis;
 }
 
+button, mat-icon, .mat-focus-indicator {
+  position: static;
+}
+
 .nao-realizado {
   color: $color-low-emphasis;
 }
@@ -66,6 +78,30 @@ mat-icon {
   display: flex;
 }
 
-:last-child(.sticky) {
-  height: 100vh;
+h3 {
+  color: $color-disabled;
+  margin-block: auto;
+  padding-left: 16px;
 }
+
+$back: #f8fafb;
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 32px;
+  padding-block: 8px;
+  display: flex;
+  background-color: $back;
+}
+
+.item{
+  display: flex;
+  flex-direction: column;
+}
+
+.grupo{
+  background-color: $back;
+}
+

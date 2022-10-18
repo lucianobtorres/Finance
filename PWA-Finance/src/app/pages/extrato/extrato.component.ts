@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
-import { startOfToday, endOfToday, getYear, getMonth, startOfMonth } from "date-fns";
+import { startOfToday, endOfToday, getYear, getMonth, startOfMonth, getDay, getDate } from "date-fns";
 import { liveQuery } from "dexie";
 import { take } from "rxjs";
 import { AddLancamentoComponent } from "src/app/components/add-lancamento/add-lancamento.component";
@@ -8,7 +8,7 @@ import { db } from "src/app/db/finance-db";
 import { MeioMovimentacao, GrupoContas, PlanoContas, Lancamento, LancamentoToService } from "src/app/models/interfaces";
 import { LancamentoService } from "src/app/services/lancamento.service";
 
-type TKey = { ano: number, mes: number };
+type TKey = { ano: number, mes: number, dia: number };
 type TVal = { lcto: Lancamento, planConta: PlanoContas, grupo: GrupoContas, meioMov: MeioMovimentacao };
 
 @Component({
@@ -67,7 +67,7 @@ export class ExtratoComponent implements OnInit {
         if (!grupo) return;
 
         lcto.valor = this.lancamentoService.getValor(lcto, meioMov);
-        const tkey = { ano: getYear(lcto.data), mes: getMonth(lcto.data) };
+        const tkey = { ano: getYear(lcto.data), mes: getMonth(lcto.data), dia: getDate(lcto.data)};
         const key = this.checkSameObjKey(this.map, tkey);
 
         if (tkey === key) {
@@ -82,8 +82,8 @@ export class ExtratoComponent implements OnInit {
     });
   }
 
-  getData(key: TKey) : Date {
-    return new Date(key.ano, key.mes, 1);
+  getDataKey(key: TKey) : Date {
+    return new Date(key.ano, key.mes, key.dia);
   }
 
   private checkSameObjKey(map : Map<TKey, TVal[]>, key: TKey) : TKey {
@@ -91,7 +91,7 @@ export class ExtratoComponent implements OnInit {
     let anotherKey;
 
     while (anotherKey = keys.next().value) {
-      if (key.ano === anotherKey.ano && key.mes === anotherKey.mes) return anotherKey;
+      if (key.ano === anotherKey.ano && key.mes === anotherKey.mes && key.dia === anotherKey.dia) return anotherKey;
     }
 
     return key;

@@ -40,11 +40,12 @@
       </span>
       <small>{{ plan.planoConta.title }}</small>
       <small>{{ plan.lancamento.desc }}</small>
-      <small>R$</small>
       <span
-        [ngClass]="{ 'nao-realizado': plan.lancamento.naoRealizado }"
+        [ngClass]="{ 'nao-realizado': plan.lancamento.naoRealizado,
+        'up': plan.lancamento.valor > 0,
+        'dw': plan.lancamento.valor < 0 }"
         class="valores"
-        >{{ plan.lancamento.valor | number: "1.2-2" }}
+        >{{ plan.lancamento.valor | currency}}
       </span>
       <div class="actions">
         <button

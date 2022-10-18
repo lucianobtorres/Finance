@@ -57,9 +57,26 @@ div.mat-expansion-panel-body{
   overflow: auto;
 }
 
-.fi-body .sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  gap: 16px;
+$size-mark: 4px;
+$right: 5px;
+//$position: relative;
+$clip: polygon(50% 0%, 0% 100%, 100% 100%);
+.dw::before {
+  content: '';
+  border-left: $size-mark solid transparent;
+  border-right: $size-mark solid transparent;
+  border-top: $size-mark solid $color-status-pendent;
+  //position: $position;
+  right: $right;
+  top: 10px;
+}
+
+.up::before {
+  content: '';
+  border-left: $size-mark solid transparent;
+  border-right: $size-mark solid transparent;
+  border-bottom: $size-mark solid $color-status-resolved;
+  //position: $position;
+  right: $right;
+  top: -10px;
 }

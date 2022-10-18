@@ -5,35 +5,36 @@
   <mat-card-content>
 
     <ng-container *ngFor="let item of map | keyvalue">
-      <div class="sticky" style="background-color: white;">
-        <fi-header>
-          {{ getData(item.key) | date:'MMMM' }}
-          <ng-container subtitulo>
-            {{ getData(item.key) | date:'yyyy' }}
-          </ng-container>
-        </fi-header>
+      <div class="grupo">
+      <div class="sticky">
+        <h3>
+            {{ getDataKey(item.key) | date:'d MMMM' }}
+          </h3>
       </div>
 
-      <div class="itens-financeiros">
+      <div class="itens-financeiros" style="background-color: white;">
         <ng-container *ngFor="let value of item.value">
-          <span class="click" (click)="editarLancamento(value.lcto)" [ngClass]="{
-    'nao-realizado':
-    value.lcto.data.getTime() >= inicioHoje.getTime()
-  }">
-            {{ value.lcto.data | date: "dd" }}
-          </span>
           <mat-icon class="click" (click)="editarLancamento(value.lcto)">{{ value.grupo.icone}}</mat-icon>
-          <small class="click" (click)="editarLancamento(value.lcto)">{{ value.planConta.title }}</small>
+
+          <div class="item click" (click)="editarLancamento(value.lcto)">
+            <small>{{ value.meioMov.title }}</small>
+            <span>{{ value.planConta.title }}</span>
+          </div>
           <small class="click" (click)="editarLancamento(value.lcto)">{{ value.lcto.desc }}</small>
-          <span (click)="editarLancamento(value.lcto)" [ngClass]="{ 'nao-realizado': value.lcto.naoRealizado }"
+          <div><span (click)="editarLancamento(value.lcto)" [ngClass]="{
+            'nao-realizado': value.lcto.naoRealizado,
+            'up': value.lcto.valor > 0,
+            'dw': value.lcto.valor < 0
+          }"
             class="valores click">{{ value.lcto.valor | currency
             }}
-          </span>
+
+          </span></div>
           <div class="actions">
-            <button mat-icon-button (click)="deleteLancamento(value.lcto)">
+            <button mat-icon-button disableRipple (click)="deleteLancamento(value.lcto)">
               <mat-icon>clear</mat-icon>
             </button>
-            <button *ngIf="
+            <button disableRipple *ngIf="
     value.lcto.naoRealizado &&
     value.lcto.data.getTime() <= finalHoje.getTime()
     " mat-icon-button (click)="lancamentoRealizado(value.lcto)">
@@ -42,6 +43,7 @@
           </div>
         </ng-container>
       </div>
+    </div>
     </ng-container>
 
   </mat-card-content>
