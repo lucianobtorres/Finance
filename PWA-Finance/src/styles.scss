@@ -56,3 +56,10 @@ snack-bar-container.fi-toast-container {
 div.mat-expansion-panel-body{
   overflow: auto;
 }
+
+.fi-body .sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  gap: 16px;
+}

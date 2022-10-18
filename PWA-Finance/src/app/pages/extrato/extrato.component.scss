@@ -1,10 +1,5 @@
 @use "theme-variables" as *;
 
-.host {
-  padding: 8px;
-  overflow: auto;
-  height: 90%;
-}
 
 mat-card-content {
   gap: 32px;
@@ -12,45 +7,14 @@ mat-card-content {
   flex-direction: column;
 
   box-sizing: border-box;
-  height: 100%;
-}
-
-
-.categorias {
-  gap: 16px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  height: calc(100% - 25px);
+  overflow: auto;
 }
 
 .categoria-container {
-  background-color: $color-background;
-  display: flex;
-  justify-content: space-between;
   border-radius: 20px;
 }
 
-.item-categoria {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-
-  h3 {
-    font-weight: normal;
-  }
-}
-
-.soma {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-
-  & span {
-    color: $primary-color;
-    font-size: xx-large;
-  }
-}
 .mat-expansion-panel {
   overflow: unset;
 }
@@ -100,4 +64,8 @@ mat-icon {
 
 .actions {
   display: flex;
+}
+
+:last-child(.sticky) {
+  height: 100vh;
 }
