@@ -30,7 +30,6 @@ export class ExtratoComponent implements OnInit {
   public inicioHoje = startOfToday();
   public finalHoje = endOfToday();
 
-
   public map = new Map<TKey, TVal[]>();
   public keys?: TKey[];
 
@@ -84,6 +83,15 @@ export class ExtratoComponent implements OnInit {
 
   getDataKey(key: TKey) : Date {
     return new Date(key.ano, key.mes, key.dia);
+  }
+
+  getSoma(key: TKey) : number {
+    const arr = this.map.get(key);
+    if (!arr) return 0;
+
+    return arr.reduce((soma, obj) => {
+      return soma + obj.lcto.valor;
+    }, 0);
   }
 
   private checkSameObjKey(map : Map<TKey, TVal[]>, key: TKey) : TKey {

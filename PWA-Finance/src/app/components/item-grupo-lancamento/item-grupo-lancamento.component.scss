@@ -29,6 +29,16 @@
   }
 }
 
+.click:hover {
+  cursor: pointer;
+  background-color: rgba($primary-color, 10%);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
 mat-expansion-panel-header.categoria-container,
 .mat-expansion-panel-header.mat-expanded,
 .mat-expansion-panel-header.mat-expanded:focus{
@@ -47,16 +57,23 @@ mat-expansion-panel-header.categoria-container,
 .itens-financeiros {
   gap: 8px;
   display: grid;
-  grid-template-columns: min-content max-content repeat(2, auto) max-content min-content;
+  grid-template-columns: max-content repeat(2, auto) max-content min-content;
   margin-block: 16px;
   align-items: center;
 
-  span:not(.nao-realizado) {
+  span.valores:not(.nao-realizado) {
     color: $primary-color;
   }
 
-  span.valores{
+  span.valores {
     justify-self: flex-end;
+  }
+
+  small {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $color-disabled;
   }
 }
 

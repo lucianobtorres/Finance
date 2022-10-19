@@ -6,6 +6,8 @@ body {
   background-color: $color-background;
 }
 
+
+
 ::-webkit-scrollbar {
   cursor:pointer;
   width: 8px;
@@ -79,4 +81,14 @@ $clip: polygon(50% 0%, 0% 100%, 100% 100%);
   //position: $position;
   right: $right;
   top: -10px;
+}
+
+.positivo {
+  color: $color-status-resolved;
+  vertical-align: super;
+}
+
+.negativo {
+  color: $color-status-pendent;
+  vertical-align: sub;
 }

@@ -11,7 +11,10 @@
         <div fxLayoutGap="16px" fxLayout="row" fxLayoutAlign=" center" >
           <ng-template [ngIf]="lancamento.mostrarSaldo" [ngIfElse]="notShow">
             <mat-icon>visibility_off</mat-icon>
-            <span>{{ lancamento.saldo | currency }}</span>
+            <span [ngClass]="{
+              'positivo' : lancamento.saldo > 0,
+              'negativo': lancamento.saldo < 0
+            }">{{ lancamento.saldo | currency }}</span>
           </ng-template>
           <ng-template #notShow>
             <mat-icon>visibility</mat-icon>

@@ -1,6 +1,6 @@
 @use "theme-variables" as *;
 
-fi-header .mat-card-title{
+fi-header .mat-card-title {
   text-transform: none;
 }
 
@@ -23,16 +23,17 @@ mat-card-content {
 
 mat-expansion-panel-header.categoria-container,
 .mat-expansion-panel-header.mat-expanded,
-.mat-expansion-panel-header.mat-expanded:focus{
+.mat-expansion-panel-header.mat-expanded:focus {
   height: auto;
   padding-block: 16px;
-  background-color: #f8fafb;}
+  background-color: #f8fafb;
+}
 
-.mat-expansion-panel-header.mat-expanded:hover{
+.mat-expansion-panel-header.mat-expanded:hover {
   background: rgba(0, 0, 0, 0.04);
 }
 
-.mat-expansion-panel-content{
+.mat-expansion-panel-content {
   width: 100%;
 }
 
@@ -43,17 +44,19 @@ mat-expansion-panel-header.categoria-container,
   align-items: center;
   padding: 16px;
   margin-inline: 16px;
-  margin-block: 16px;
 
   span.valores:not(.nao-realizado) {
     color: $primary-color;
   }
 
-  span.valores{
+  span.valores {
     justify-self: flex-end;
   }
 
-  small{
+  small {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: $color-disabled;
   }
 }
@@ -62,11 +65,14 @@ mat-expansion-panel-header.categoria-container,
   cursor: pointer;
   background-color: rgba($primary-color, 10%);
 }
+
 mat-icon {
   color: $color-medium-emphasis;
 }
 
-button, mat-icon, .mat-focus-indicator {
+button,
+mat-icon,
+.mat-focus-indicator {
   position: static;
 }
 
@@ -78,10 +84,15 @@ button, mat-icon, .mat-focus-indicator {
   display: flex;
 }
 
-h3 {
+.header {
+  display: flex;
+  flex-direction: column;
   color: $color-disabled;
   margin-block: auto;
   padding-left: 16px;
+  h3 {
+    margin: 0;
+  }
 }
 
 $back: #f8fafb;
@@ -90,18 +101,24 @@ $back: #f8fafb;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  height: 32px;
   padding-block: 8px;
   display: flex;
   background-color: $back;
 }
 
-.item{
+.item {
   display: flex;
   flex-direction: column;
 }
 
-.grupo{
+.grupo {
   background-color: $back;
 }
 
+.component {
+  padding: 8px;
+}
+
+div.grupo:last-of-type {
+  padding-bottom: 16px;
+}

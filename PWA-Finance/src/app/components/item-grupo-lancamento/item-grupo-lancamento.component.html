@@ -24,13 +24,8 @@
 
   <div class="itens-financeiros" *ngIf="panel.expanded">
     <ng-container *ngFor="let plan of getLancamentos()">
-      <button
-        mat-icon-button
-        (click)="editarLancamento.emit(plan.lancamento.id)"
-      >
-        <mat-icon>edit</mat-icon>
-      </button>
       <span
+        class="click" (click)="editarLancamento.emit(plan.lancamento.id)"
         [ngClass]="{
           'nao-realizado':
             plan.lancamento.data.getTime() >= inicioHoje.getTime()
@@ -38,9 +33,13 @@
       >
         {{ plan.lancamento.data | date: "dd-MMM" }}
       </span>
-      <small>{{ plan.planoConta.title }}</small>
+      <div class="item click" (click)="editarLancamento.emit(plan.lancamento.id)">
+        <small>{{ plan.meioMovimentacao.title }}</small>
+        <span>{{ plan.planoConta.title }}</span>
+      </div>
       <small>{{ plan.lancamento.desc }}</small>
       <span
+        class="click" (click)="editarLancamento.emit(plan.lancamento.id)"
         [ngClass]="{ 'nao-realizado': plan.lancamento.naoRealizado,
         'up': plan.lancamento.valor > 0,
         'dw': plan.lancamento.valor < 0 }"
