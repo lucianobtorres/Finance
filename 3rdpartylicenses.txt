@@ -354,6 +354,8 @@ Apache License
 
 
 
+ng2-currency-mask
+
 rxjs
 Apache-2.0
                                Apache License
