@@ -16,15 +16,15 @@ body {
 
 ::-webkit-scrollbar-track {
   border-radius: 8px;
-  background: #f8fafb;
-  outline: 2px #f8fafb solid;
+  background: $color-background;
+  outline: 2px $color-background solid;
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background: $primary-color;
-  outline: 2px #f8fafb solid;
+  outline: 2px $color-background solid;
   background-clip: padding-box;
 }
 
@@ -71,6 +71,7 @@ $clip: polygon(50% 0%, 0% 100%, 100% 100%);
   //position: $position;
   right: $right;
   top: 10px;
+  vertical-align: sub;
 }
 
 .up::before {
@@ -81,14 +82,13 @@ $clip: polygon(50% 0%, 0% 100%, 100% 100%);
   //position: $position;
   right: $right;
   top: -10px;
+  vertical-align: super;
 }
 
 .positivo {
   color: $color-status-resolved;
-  vertical-align: super;
 }
 
 .negativo {
   color: $color-status-pendent;
-  vertical-align: sub;
 }

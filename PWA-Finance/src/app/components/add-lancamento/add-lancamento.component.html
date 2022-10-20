@@ -15,16 +15,12 @@
     </mat-card-title>
     <mat-card-content>
       <form class="form-flex">
-        <mat-form-field class="item-flex-s">
-          <mat-label> Data </mat-label>
-          <input matInput [matDatepicker]="picker" [formControl]="formAdd.controls.data" />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker touchUi #picker> </mat-datepicker>
-        </mat-form-field>
 
-        <mat-form-field class="item-flex-s">
+        <mat-form-field hideRequiredMarker class="item-flex-l larger valor" appearance="standard" floatLabel="always">
           <mat-label>Valor</mat-label>
-          <input inputmode="decimal" type="number" matInput [formControl]="formAdd.controls.valor" />
+          <input matInput [formControl]="formAdd.controls.valor"
+          currencyMask
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
         </mat-form-field>
 
         <mat-chip-list #chipList="matChipList" multiple class="item-flex-l larger">
@@ -38,6 +34,13 @@
             </div>
           </mat-chip>
         </mat-chip-list>
+
+        <mat-form-field class="item-flex-l" >
+          <mat-label> Data </mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="formAdd.controls.data" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker> </mat-datepicker>
+        </mat-form-field>
 
         <mat-form-field class="item-flex-l">
           <mat-label>Tipo Conta</mat-label>
@@ -71,7 +74,7 @@
         </mat-form-field>
       </form>
     </mat-card-content>
-    <mat-card-footer>
+    <mat-card-footer >
       <mat-card-actions>
         <div class="container-button">
           <button id="salvar" mat-flat-button color="primary" (click)="salvar()">

@@ -25,6 +25,7 @@
     "@angular/service-worker": "^14.2.0",
     "date-fns": "^2.29.3",
     "dexie": "^3.2.2",
+    "ng2-currency-mask": "^13.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "web-push": "^3.5.0",

@@ -13,7 +13,8 @@
             <mat-icon>visibility_off</mat-icon>
             <span [ngClass]="{
               'positivo' : lancamento.saldo > 0,
-              'negativo': lancamento.saldo < 0
+              'negativo': lancamento.saldo < 0,
+              'neutro': lancamento.saldo === 0
             }">{{ lancamento.saldo | currency }}</span>
           </ng-template>
           <ng-template #notShow>

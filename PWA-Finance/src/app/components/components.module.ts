@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { MaterialModule } from '../module/material.module';
 import { HomeComponent } from '../pages/home/home.component';
@@ -34,6 +35,7 @@ export const components = [
   exports: components,
   imports: [
     CommonModule,
+    CurrencyMaskModule,
     MaterialModule,
     MatToolbarModule,
     FormsModule,
