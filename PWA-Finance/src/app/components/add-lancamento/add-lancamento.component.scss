@@ -34,7 +34,7 @@ mat-card-content {
 .form-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 8px;
 }
 
 .item-flex-s {
@@ -54,6 +54,7 @@ mat-card-content {
   justify-content: space-between;
   align-items: center;
   color: $primary-color;
+  height: 16px;
 }
 
 .chip {
@@ -64,6 +65,20 @@ mat-card-content {
 
 .mat-chip-list {
   width: 99%;
+  margin-bottom: 8px;
+}
+
+.mat-card-actions,
+.mat-card-footer {
+    margin: 0;
+    padding: 0;
+}
+
+.mat-chip{
+  font-size: 14px;
+  mat-icon {
+    font-size: 24px;
+  }
 }
 
 .movs {
@@ -84,6 +99,7 @@ mat-card-content {
 }
 
 .valor {
-  font-size: 36px;
+  font-size: 24px;
   color: $primary-color;
+  padding: 8px;
 }
