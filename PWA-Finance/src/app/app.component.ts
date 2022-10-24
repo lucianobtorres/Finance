@@ -18,17 +18,17 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     //this.startup();
   }
-;
+  ;
 
   startup() {
     screen.orientation.lock("portrait")
-    .then(() => {
-      console.log('portrait')
+      .then(() => {
+        console.log('portrait')
       }
-    )
-    .catch((error) => {
-      console.log(error)
-    });
+      )
+      .catch((error) => {
+        console.log(error)
+      });
 
     // const element = document.querySelector('body');
     // element?.addEventListener('touchstart', (e) => {

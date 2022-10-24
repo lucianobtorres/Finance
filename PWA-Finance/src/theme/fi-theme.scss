@@ -19,10 +19,9 @@ $fi-theme-accent: mat.define-palette($mat-accent, 500, A100, 500);
 
 $tipo: mat.define-typography-config($font-family: 'Roboto, "Helvetica Neue", sans-serif');
 
-$fi-theme: mat.define-light-theme((color: (
-  primary: $fi-theme-primary,
-  accent: $fi-theme-accent ),
-  typography: $tipo));
+$fi-theme: mat.define-light-theme((color: (primary: $fi-theme-primary,
+        accent: $fi-theme-accent ),
+      typography: $tipo));
 
 @include mat.typography-hierarchy($tipo);
 

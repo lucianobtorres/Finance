@@ -35,14 +35,13 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
 
   constructor(
     private _bottomSheetRef: MatBottomSheetRef<AddLancamentoComponent>,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data:
-      {
-        gruposConta: GrupoContas[],
-        planosConta: PlanoContas[],
-        meiosMovimentacao: MeioMovimentacao[]
-        lancamento?: Lancamento
-        dia?: Date
-      }) {
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: {
+      gruposConta: GrupoContas[],
+      planosConta: PlanoContas[],
+      meiosMovimentacao: MeioMovimentacao[]
+      lancamento?: Lancamento
+      dia?: Date
+    }) {
     this.planosConta = data.planosConta;
     this.meiosMovs = data.meiosMovimentacao;
     this.tipo = data.lancamento ? 'Editar' : 'Adicionar';

@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
-import { interval, timer, map, takeWhile, Observable, tap, finalize, of, switchMap, take, Subscription } from 'rxjs';
+import { interval, map, tap, take, Subscription } from 'rxjs';
 import { MessageData, TypeToast } from 'src/app/models/message-data';
 import { TOAST_DURATION } from 'src/app/services/toast.service';
 
@@ -61,7 +61,7 @@ export class ToastComponent implements OnInit, OnDestroy {
       map(step => step + 1),
       tap(step => {
         this.progressbarValue = step / steps * 100;
-    })).subscribe();
+      })).subscribe();
   }
 
   dismiss(): void {

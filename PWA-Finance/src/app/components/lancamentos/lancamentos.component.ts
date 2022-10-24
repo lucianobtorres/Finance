@@ -90,7 +90,7 @@ export class LancamentosComponent implements OnInit {
 
   addLancamento(dia?: Date) {
     let addMais = false;
-console.log(dia)
+
     this.bottomSheet
       .open(
         AddLancamentoComponent,

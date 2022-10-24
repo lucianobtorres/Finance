@@ -50,7 +50,7 @@ export abstract class DBRepository<T> {
               .pipe(
                 take(1)
               )
-              .subscribe((value) => {});
+              .subscribe((value) => { });
           }
         })
         .catch(e => {

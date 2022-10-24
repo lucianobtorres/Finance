@@ -39,7 +39,7 @@ export class ToastService {
     });
   }
 
-  showError(msg: string, desc?: string, ): MatSnackBarRef<ToastComponent> {
+  showError(msg: string, desc?: string): MatSnackBarRef<ToastComponent> {
     return this.show({
       typeToast: TypeToast.ERROR,
       message: msg,

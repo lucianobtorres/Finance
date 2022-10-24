@@ -88,7 +88,7 @@ export class FinanceDB extends Dexie {
       { grupoContasId: ids, title: 'Pagamento Parcela' },
       { grupoContasId: ids++, title: 'Pagamento Boleto' },
 
-    ] , { allKeys: true });
+    ], { allKeys: true });
 
     const keysMeioMov = await db.meioMovimentacao.bulkAdd([
       { sigla: 'CC', title: 'Cartão de Crédito', entrada: false },
@@ -100,7 +100,7 @@ export class FinanceDB extends Dexie {
       { sigla: 'SQ', title: 'Saque', entrada: false },
       { sigla: 'IV', title: 'Investimento', entrada: false },
 
-    ] , { allKeys: true });
+    ], { allKeys: true });
   }
 }
 

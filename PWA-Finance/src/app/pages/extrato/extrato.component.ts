@@ -66,7 +66,7 @@ export class ExtratoComponent implements OnInit {
         if (!grupo) return;
 
         lcto.valor = this.lancamentoService.getValor(lcto, meioMov);
-        const tkey = { ano: getYear(lcto.data), mes: getMonth(lcto.data), dia: getDate(lcto.data)};
+        const tkey = { ano: getYear(lcto.data), mes: getMonth(lcto.data), dia: getDate(lcto.data) };
         const key = this.checkSameObjKey(this.map, tkey);
 
         if (tkey === key) {
@@ -76,16 +76,16 @@ export class ExtratoComponent implements OnInit {
         const item = this.map.get(key);
         item?.push(
           { lcto, planConta, grupo, meioMov }
-          );
+        );
       });
     });
   }
 
-  getDataKey(key: TKey) : Date {
+  getDataKey(key: TKey): Date {
     return new Date(key.ano, key.mes, key.dia);
   }
 
-  getSoma(key: TKey) : number {
+  getSoma(key: TKey): number {
     const arr = this.map.get(key);
     if (!arr) return 0;
 
@@ -94,7 +94,7 @@ export class ExtratoComponent implements OnInit {
     }, 0);
   }
 
-  private checkSameObjKey(map : Map<TKey, TVal[]>, key: TKey) : TKey {
+  private checkSameObjKey(map: Map<TKey, TVal[]>, key: TKey): TKey {
     const keys = map.keys();
     let anotherKey;
 
