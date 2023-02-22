@@ -17,6 +17,8 @@ import { MenuComponent } from './menu/menu.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ToastComponent } from './toast/toast.component';
 import { ConvertWithFunctionPipe } from '../pipes/convert-with-function.pipe';
+import { ItemComponent } from '../pages/configuracoes/item/item.component';
+import { ConfiguracoesComponent } from '../pages/configuracoes/configuracoes.component';
 
 export const components = [
   HomeComponent,
@@ -28,6 +30,8 @@ export const components = [
   AddLancamentoComponent,
   ToastComponent,
   ConvertWithFunctionPipe,
+  ConfiguracoesComponent,
+  ItemComponent
 ]
 
 @NgModule({

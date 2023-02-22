@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
   <mat-card class="mat-elevation-z0">
     <div fxLayoutAlign="space-between">
+       <!-- *ngFor="let item of list"> -->
         <fi-header>
           Página não encontrada
         </fi-header>

@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { MatChip, MatChipList } from '@angular/material/chips';
-import { Subscription } from 'rxjs';
-import { GrupoContas, Lancamento, MeioMovimentacao, PlanoContas } from 'src/app/models/interfaces';
-
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, Inject } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from "@angular/material/bottom-sheet";
+import { MatChipList } from "@angular/material/chips";
+import { Subscription } from "rxjs";
+import { PlanoContas, MeioMovimentacao, GrupoContas, Lancamento } from "src/app/models/interfaces";
 
 interface FormAdd {
   planConta: FormControl<PlanoContas | null | undefined>;
@@ -42,8 +41,8 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
       lancamento?: Lancamento
       dia?: Date
     }) {
-    this.planosConta = data.planosConta;
-    this.meiosMovs = data.meiosMovimentacao;
+    this.planosConta = data.planosConta.map((x) => x);
+    this.meiosMovs = data.meiosMovimentacao.map((x) => x);
     this.tipo = data.lancamento ? 'Editar' : 'Adicionar';
     this.btnTexto = data.lancamento ? 'Salvar' : 'Adicionar';
     this.multiAdd = !!data.dia;
