@@ -13,6 +13,7 @@ import { ComponentsModule } from './components/components.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
 import { MaterialModule } from './module/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localePt);
 
@@ -27,6 +28,7 @@ registerLocaleData(localePt);
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

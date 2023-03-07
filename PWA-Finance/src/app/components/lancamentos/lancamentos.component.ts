@@ -83,7 +83,6 @@ export class LancamentosComponent implements OnInit {
   }
 
   private filtrarLancamentosMes(lcto: Lancamento): boolean {
-    //return true;
     return lcto.data > startOfMonth(this.hoje) &&
       lcto.data <= lastDayOfMonth(this.hoje);
   }

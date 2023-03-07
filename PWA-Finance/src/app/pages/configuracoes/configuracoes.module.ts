@@ -4,8 +4,6 @@ import { ComponentsModule } from "src/app/components/components.module";
 import { EditGrupoLancamentoComponent } from "src/app/components/edit-grupo-lancamento/edit-grupo-lancamento.component";
 import { MaterialModule } from "src/app/module/material.module";
 import { ConfiguracoesRoutingModule } from "./configuracoes-routing.module";
-import { ConfiguracoesComponent } from "./configuracoes.component";
-import { ItemComponent } from "./item/item.component";
 
 @NgModule({
   declarations: [
