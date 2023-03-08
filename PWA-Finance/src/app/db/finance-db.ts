@@ -1,11 +1,21 @@
 import Dexie, { Table } from 'dexie';
 import { GrupoContas, PlanoContas, MeioMovimentacao, Lancamento } from '../models/interfaces';
 
+export interface IHistoricoCompras {
+  id?: number;
+  comprado: boolean;
+  item: string;
+  data: string;
+}
+
+
 export class FinanceDB extends Dexie {
   grupoContas!: Table<GrupoContas, number>;
   planoContas!: Table<PlanoContas, number>;
   meioMovimentacao!: Table<MeioMovimentacao, number>;
   lancamentos!: Table<Lancamento, number>;
+
+  //historicoCompras!: Table<IHistoricoCompras, number>;
 
   constructor() {
     super('Finance-DB');
@@ -15,6 +25,7 @@ export class FinanceDB extends Dexie {
       planoContas: '++id, grupoContasId',
       meioMovimentacao: '++id',
       lancamentos: '++id, planoContasId, meioMovimentacaoId',
+      //historicoCompras: '++id, compra, produto, data',
     });
 
     this.on('populate', () => this.populate());

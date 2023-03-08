@@ -1,17 +1,14 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IconsRegisterService } from './services/icons-register.service';
 
 @Component({
   selector: 'fi-root',
-  template: `
-  <main>
-    <router-outlet>
-    </router-outlet>
-  </main>
-  <fi-menu></fi-menu>
-  `,
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
+  public iconeLogo = IconsRegisterService.LOGO;
   title = 'Finance';
 
   constructor(router: Router) {

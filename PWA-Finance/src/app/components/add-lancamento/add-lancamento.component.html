@@ -3,7 +3,7 @@
         <mat-card-title>
             <div class="header">
                 <button mat-raised-button color="primary" (click)="salvar()">
-                    Adicionar
+                    {{ btnTexto }}
                 </button>
                 <small [ngClass]="{ 'no-display': data.lancamento }">
                     <mat-slide-toggle [(ngModel)]="multiAdd" color="primary">+ de 1</mat-slide-toggle>
@@ -11,9 +11,6 @@
                 <button mat-stroked-button color="primary" (click)="cancelar()">
                     Cancelar
                 </button>
-                <!-- <h4>
-                {{ tipo }}
-                </h4> -->
             </div>
         </mat-card-title>
         <mat-card-content>
@@ -28,7 +25,7 @@
 
                 <mat-form-field class="item-flex-s" style="margin-top: 24px; margin-bottom: -24px;">
                     <mat-label> Data </mat-label>
-                    <input matInput [matDatepicker]="picker" [formControl]="formAdd.controls.data" [disabled]="true" />
+                    <input matInput [matDatepicker]="picker" [formControl]="formAdd.controls.data" [disabled]="true" class="primary-color"/>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi #picker [disabled]="false"> </mat-datepicker>
                 </mat-form-field>

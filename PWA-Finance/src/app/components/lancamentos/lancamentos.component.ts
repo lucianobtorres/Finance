@@ -87,9 +87,38 @@ export class LancamentosComponent implements OnInit {
       lcto.data <= lastDayOfMonth(this.hoje);
   }
 
+  deleteFromController(id: number) {
+    if (!this.itensLancamentos.removeLancamento(id)) return;
+
+    const index = this.lancamentos.findIndex(x => x.id === id);
+    this.lancamentos.splice(index, 1);
+  }
+
+  deleteLancamento(id: number) {
+    this.deleteFromController(id);
+    this.lancamentoService.delete(id, 'Lancamento removido');
+  }
+
+  getBottomSheet(parametro?: Date) {
+    return this.bottomSheet
+      .open(
+        AddLancamentoComponent,
+        {
+          data: {
+            gruposConta: this.gruposConta,
+            planosConta: this.planosConta,
+            meiosMovimentacao: this.meiosMovimentacao,
+            parametro
+          }
+        })
+      .afterDismissed()
+      .pipe(
+        take(1)
+      )
+  }
+
   addLancamento(dia?: Date) {
     let addMais = false;
-
     this.bottomSheet
       .open(
         AddLancamentoComponent,
@@ -105,30 +134,19 @@ export class LancamentosComponent implements OnInit {
       .pipe(
         take(1)
       )
-      .subscribe({
+    .subscribe({
         next: (result: { lancamento: LancamentoToService, multiAdd: boolean }) => {
           if (!result) return;
           this.lancamentoService.add(result.lancamento);
-          addMais = result.multiAdd;
+          addMais = result.multiAdd ?? false;
           dia = result.lancamento.data;
           console.log(result.lancamento.data)
         },
         complete: () => {
+          console.log(addMais)
           if (addMais) this.addLancamento(new Date(dia ?? new Date()));
         }
       });
-  }
-
-  deleteFromController(id: number) {
-    if (!this.itensLancamentos.removeLancamento(id)) return;
-
-    const index = this.lancamentos.findIndex(x => x.id === id);
-    this.lancamentos.splice(index, 1);
-  }
-
-  deleteLancamento(id: number) {
-    this.deleteFromController(id);
-    this.lancamentoService.delete(id, 'Lancamento removido');
   }
 
   editarLancamento(id: number) {
@@ -150,7 +168,7 @@ export class LancamentosComponent implements OnInit {
       .pipe(
         take(1)
       )
-      .subscribe({
+    .subscribe({
         next: (result: { lancamento: LancamentoToService }) => {
           if (!result || !result.lancamento) return;
 

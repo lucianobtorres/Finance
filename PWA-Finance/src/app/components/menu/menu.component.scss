@@ -1,12 +1,10 @@
 @use "theme-variables" as *;
 
 .container-button {
-  margin-top: 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: inherit;
-  margin-bottom: 24px;
 }
 
 footer {
@@ -22,7 +20,7 @@ button:not(.active-menu-item) {
 }
 
 .active-menu-item {
-  color: $primary-color;
+  color: #64ee85;
 }
 
 .menu-tabs {
@@ -41,7 +39,7 @@ button:not(.active-menu-item) {
 
 
 :host mat-toolbar {
-  background-color: $color-background;
+  background-color: slategray;
 }
 
 button {

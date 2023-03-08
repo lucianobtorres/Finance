@@ -104,3 +104,7 @@ mat-card-content {
   color: $primary-color;
   padding: 8px;
 }
+
+input.primary-color:disabled {
+  color: $primary-color;
+}

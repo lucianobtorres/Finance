@@ -25,7 +25,6 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
   public planosConta: PlanoContas[];
   public meiosMovs: MeioMovimentacao[];
 
-  public tipo: string;
   public btnTexto: string;
   public multiAdd = false;
 
@@ -43,8 +42,7 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
     }) {
     this.planosConta = data.planosConta.map((x) => x);
     this.meiosMovs = data.meiosMovimentacao.map((x) => x);
-    this.tipo = data.lancamento ? 'Editar' : 'Adicionar';
-    this.btnTexto = data.lancamento ? 'Salvar' : 'Adicionar';
+    this.btnTexto = data.lancamento ? 'Alterar' : 'Adicionar';
     this.multiAdd = !!data.dia;
   }
 
