@@ -9,13 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
-import { ComponentsModule } from './components/components.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
 import { MaterialModule } from './module/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 import { IconsRegisterService } from './services/icons-register.service';
+import { ComponentsModule } from './components/components.module';
 
 registerLocaleData(localePt);
 

@@ -7,7 +7,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  cursor:pointer;
+  cursor: pointer;
   width: 8px;
   height: 8px;
 }
@@ -45,15 +45,15 @@ snack-bar-container.fi-toast-container {
 .mat-snack-bar-handset .mat-snack-bar-container {
   width: calc(100% - 32px) !important;
   right: 0 !important;
- }
+}
 
- mat-card {
+mat-card {
   box-sizing: border-box;
   height: calc(100vh - 64px);
   overflow: hidden;
 }
 
-div.mat-expansion-panel-body{
+div.mat-expansion-panel-body {
   overflow: auto;
 }
 
@@ -61,6 +61,7 @@ $size-mark: 4px;
 $right: 5px;
 //$position: relative;
 $clip: polygon(50% 0%, 0% 100%, 100% 100%);
+
 .dw::before {
   content: '';
   border-left: $size-mark solid transparent;

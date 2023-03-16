@@ -18,11 +18,6 @@ export class MenuComponent {
       icon: 'receipt_long'
     },
     {
-      location: 'grafico',
-      label: 'Gráficos',
-      icon: 'trending_up'
-    },
-    {
       location: 'configuracoes',
       label: 'Configurações',
       icon: 'settings'

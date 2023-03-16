@@ -1,9 +1,0 @@
-<a mat-list-item
-    [routerLink]="url"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    (click)="itemMenuClick.emit()"
-    [disabled]="disabled">
-    <mat-icon *ngIf="!!icon" mat-list-icon>{{ icon }}</mat-icon>
-    <span>{{ text }}</span>
-</a>

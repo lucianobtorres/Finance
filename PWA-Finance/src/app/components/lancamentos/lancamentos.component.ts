@@ -34,7 +34,7 @@ export class LancamentosComponent implements OnInit {
 
   constructor(
     readonly bottomSheet: MatBottomSheet,
-    readonly lancamentoService: LancamentoService
+    readonly dbService: LancamentoService
   ) {
     this.hoje.setHours(0, 0, 0, 0);
   }
@@ -70,7 +70,7 @@ export class LancamentosComponent implements OnInit {
           this.itensLancamentos.add(idGrupo, item);
         }
 
-        lcto.valor = this.lancamentoService.getValor(lcto, meioMov!);
+        lcto.valor = this.dbService.getValor(lcto, meioMov!);
         if (!lcto.naoRealizado) this.saldo += lcto.valor;
 
         this.itensLancamentos[idGrupo]?.add({
@@ -96,7 +96,7 @@ export class LancamentosComponent implements OnInit {
 
   deleteLancamento(id: number) {
     this.deleteFromController(id);
-    this.lancamentoService.delete(id, 'Lancamento removido');
+    this.dbService.delete(id, 'Lancamento removido');
   }
 
   getBottomSheet(parametro?: Date) {
@@ -137,7 +137,7 @@ export class LancamentosComponent implements OnInit {
     .subscribe({
         next: (result: { lancamento: LancamentoToService, multiAdd: boolean }) => {
           if (!result) return;
-          this.lancamentoService.add(result.lancamento);
+          this.dbService.add(result.lancamento);
           addMais = result.multiAdd ?? false;
           dia = result.lancamento.data;
           console.log(result.lancamento.data)
@@ -173,7 +173,7 @@ export class LancamentosComponent implements OnInit {
           if (!result || !result.lancamento) return;
 
           this.deleteFromController(id);
-          this.lancamentoService.update(id, result.lancamento, 'Lancamento atualizado');
+          this.dbService.update(id, result.lancamento, 'Lancamento atualizado');
         }
       });
   }
@@ -183,6 +183,6 @@ export class LancamentosComponent implements OnInit {
     if (!lancamento) return;
 
     lancamento.naoRealizado = false;
-    this.lancamentoService.update(id, { naoRealizado: false }, '');
+    this.dbService.update(id, { naoRealizado: false }, '');
   }
 }
