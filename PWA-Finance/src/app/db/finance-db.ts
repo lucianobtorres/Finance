@@ -28,10 +28,32 @@ export class FinanceDB extends Dexie {
       //historicoCompras: '++id, compra, produto, data',
     });
 
+    this.version(2).stores({
+      grupoContas: '++id',
+      planoContas: '++id, grupoContasId',
+      meioMovimentacao: '++id, sigla, title, entrada, parcelavel, teste',
+      lancamentos: '++id, planoContasId, meioMovimentacaoId',
+      //historicoCompras: '++id, compra, produto, data',
+    }).upgrade(async (tx) => {
+      console.log('Atualizando versão do banco de dados.');
+
+      await tx.meioMovimentacao.bulkAdd([
+        { sigla: 'CC', title: 'Cartão de Crédito', entrada: false, parcelavel: true, teste: false },
+        { sigla: 'DB', title: 'Debito', entrada: false, parcelavel: false, teste: false },
+        { sigla: 'DI', title: 'Dinheiro', entrada: false, parcelavel: false, teste: false },
+        { sigla: 'DP', title: 'Depósito', entrada: true, parcelavel: false, teste: false },
+        { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true, parcelavel: false, teste: false },
+        { sigla: 'CH', title: 'Cheque', entrada: false, parcelavel: false, teste: false },
+        { sigla: 'SQ', title: 'Saque', entrada: false, parcelavel: false, teste: false },
+        { sigla: 'IV', title: 'Investimento', entrada: false, parcelavel: false, teste: true },
+      ], { allKeys: true });
+    });;
+
     this.on('populate', () => this.populate());
   }
 
   async populate() {
+    console.log('Método populate foi chamado.');
     await db.grupoContas.bulkAdd([
       { title: 'Receita', icone: 'attach_money' },
       { title: 'Alimentação', icone: 'restaurant' },
@@ -102,14 +124,14 @@ export class FinanceDB extends Dexie {
     ], { allKeys: true });
 
     await db.meioMovimentacao.bulkAdd([
-      { sigla: 'CC', title: 'Cartão de Crédito', entrada: false, parcelavel: true },
-      { sigla: 'DB', title: 'Debito', entrada: false, parcelavel: false },
-      { sigla: 'DI', title: 'Dinheiro', entrada: false, parcelavel: false },
-      { sigla: 'DP', title: 'Depósito', entrada: true, parcelavel: false },
-      { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true, parcelavel: false },
-      { sigla: 'CH', title: 'Cheque', entrada: false, parcelavel: false },
-      { sigla: 'SQ', title: 'Saque', entrada: false, parcelavel: false },
-      { sigla: 'IV', title: 'Investimento', entrada: false, parcelavel: false },
+      { sigla: 'CC', title: 'Cartão de Crédito', entrada: false, parcelavel: true, teste: false },
+      { sigla: 'DB', title: 'Debito', entrada: false, parcelavel: false, teste: false },
+      { sigla: 'DI', title: 'Dinheiro', entrada: false, parcelavel: false, teste: false },
+      { sigla: 'DP', title: 'Depósito', entrada: true, parcelavel: false, teste: false },
+      { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true, parcelavel: false, teste: false },
+      { sigla: 'CH', title: 'Cheque', entrada: false, parcelavel: false, teste: false },
+      { sigla: 'SQ', title: 'Saque', entrada: false, parcelavel: false, teste: false },
+      { sigla: 'IV', title: 'Investimento', entrada: false, parcelavel: false, teste: true },
 
     ], { allKeys: true });
   }

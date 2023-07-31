@@ -69,6 +69,7 @@ export class MeioMovimentacaoComponent implements AfterViewInit {
             title: string,
             entrada: boolean,
             parcelavel: boolean,
+            teste: boolean,
           },
           multiAdd: boolean
         }) => {
