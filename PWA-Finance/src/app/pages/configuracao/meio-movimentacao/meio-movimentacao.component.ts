@@ -30,6 +30,7 @@ export class MeioMovimentacaoComponent implements AfterViewInit {
     'sigla',
     'title',
     'entrada',
+    'parcelavel',
   ];
 
   constructor(
@@ -67,6 +68,7 @@ export class MeioMovimentacaoComponent implements AfterViewInit {
             sigla: string,
             title: string,
             entrada: boolean,
+            parcelavel: boolean,
           },
           multiAdd: boolean
         }) => {

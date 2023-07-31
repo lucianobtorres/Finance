@@ -16,6 +16,7 @@ export interface MeioMovimentacao {
   sigla: string;
   title: string;
   entrada: boolean;
+  parcelavel: boolean;
 }
 
 export interface LancamentoToService {

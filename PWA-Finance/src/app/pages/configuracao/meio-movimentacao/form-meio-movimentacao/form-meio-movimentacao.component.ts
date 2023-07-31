@@ -7,6 +7,7 @@ interface FormMeioMovimentacao {
   sigla: FormControl<string | undefined>,
   title: FormControl<string | undefined>,
   entrada: FormControl<boolean>,
+  parcelavel: FormControl<boolean>,
 }
 
 @Component({
@@ -32,11 +33,13 @@ export class FormMeioMovimentacaoComponent implements OnInit {
     const siglaValue = this.data.item ? this.data.item.sigla : undefined;
     const titleValue = this.data.item ? this.data.item.title : undefined;
     const entradaValue = this.data.item ? this.data.item.entrada : false;
+    const parcelavelValue = this.data.item ? this.data.item.parcelavel : false;
 
     this.form = this.fb.nonNullable.group({
       sigla: [siglaValue, [Validators.required]],
       title: [titleValue, [Validators.required]],
-      entrada: [entradaValue]
+      entrada: [entradaValue],
+      parcelavel: [parcelavelValue]
     });
   }
 

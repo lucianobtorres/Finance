@@ -32,7 +32,7 @@ export class FinanceDB extends Dexie {
   }
 
   async populate() {
-    const keysGrupo = await db.grupoContas.bulkAdd([
+    await db.grupoContas.bulkAdd([
       { title: 'Receita', icone: 'attach_money' },
       { title: 'Alimentação', icone: 'restaurant' },
       { title: 'Moradia', icone: 'home_work' },
@@ -43,7 +43,7 @@ export class FinanceDB extends Dexie {
 
     let ids: number = 1;
 
-    const keysPlanContas = await db.planoContas.bulkAdd([
+    await db.planoContas.bulkAdd([
       { grupoContasId: ids, title: 'Salário  / Adiantamento /  Autônomo' },
       { grupoContasId: ids, title: 'Férias' },
       { grupoContasId: ids, title: '13º salário' },
@@ -101,15 +101,15 @@ export class FinanceDB extends Dexie {
 
     ], { allKeys: true });
 
-    const keysMeioMov = await db.meioMovimentacao.bulkAdd([
-      { sigla: 'CC', title: 'Cartão de Crédito', entrada: false },
-      { sigla: 'DB', title: 'Debito', entrada: false },
-      { sigla: 'DI', title: 'Dinheiro', entrada: false },
-      { sigla: 'DP', title: 'Depósito', entrada: true },
-      { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true },
-      { sigla: 'CH', title: 'Cheque', entrada: false },
-      { sigla: 'SQ', title: 'Saque', entrada: false },
-      { sigla: 'IV', title: 'Investimento', entrada: false },
+    await db.meioMovimentacao.bulkAdd([
+      { sigla: 'CC', title: 'Cartão de Crédito', entrada: false, parcelavel: true },
+      { sigla: 'DB', title: 'Debito', entrada: false, parcelavel: false },
+      { sigla: 'DI', title: 'Dinheiro', entrada: false, parcelavel: false },
+      { sigla: 'DP', title: 'Depósito', entrada: true, parcelavel: false },
+      { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true, parcelavel: false },
+      { sigla: 'CH', title: 'Cheque', entrada: false, parcelavel: false },
+      { sigla: 'SQ', title: 'Saque', entrada: false, parcelavel: false },
+      { sigla: 'IV', title: 'Investimento', entrada: false, parcelavel: false },
 
     ], { allKeys: true });
   }

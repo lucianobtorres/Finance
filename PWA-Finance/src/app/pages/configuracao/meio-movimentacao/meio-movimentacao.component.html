@@ -27,6 +27,11 @@
                     <mat-cell *matCellDef="let row"> {{row.entrada ? '&#10003;' : ''}} </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="parcelavel">
+                    <mat-header-cell *matHeaderCellDef> Parcela </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.parcelavel ? '&#10003;' : ''}} </mat-cell>
+                </ng-container>
+
                 <mat-header-row *matHeaderRowDef="displayed_columns; sticky: true"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayed_columns; let i = index;"
                     (click)="editRow(row)"></mat-row>
