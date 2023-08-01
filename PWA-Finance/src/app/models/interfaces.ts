@@ -17,7 +17,6 @@ export interface MeioMovimentacao {
   title: string;
   entrada: boolean;
   parcelavel: boolean;
-  teste: boolean;
 }
 
 export interface LancamentoToService {

@@ -31,23 +31,19 @@ export class FinanceDB extends Dexie {
     this.version(2).stores({
       grupoContas: '++id',
       planoContas: '++id, grupoContasId',
-      meioMovimentacao: '++id, sigla, title, entrada, parcelavel, teste',
+      meioMovimentacao: '++id, sigla, title, entrada, parcelavel',
       lancamentos: '++id, planoContasId, meioMovimentacaoId',
       //historicoCompras: '++id, compra, produto, data',
     }).upgrade(async (tx) => {
       console.log('Atualizando versão do banco de dados.');
 
-      await tx.meioMovimentacao.bulkAdd([
-        { sigla: 'CC', title: 'Cartão de Crédito', entrada: false, parcelavel: true, teste: false },
-        { sigla: 'DB', title: 'Debito', entrada: false, parcelavel: false, teste: false },
-        { sigla: 'DI', title: 'Dinheiro', entrada: false, parcelavel: false, teste: false },
-        { sigla: 'DP', title: 'Depósito', entrada: true, parcelavel: false, teste: false },
-        { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true, parcelavel: false, teste: false },
-        { sigla: 'CH', title: 'Cheque', entrada: false, parcelavel: false, teste: false },
-        { sigla: 'SQ', title: 'Saque', entrada: false, parcelavel: false, teste: false },
-        { sigla: 'IV', title: 'Investimento', entrada: false, parcelavel: false, teste: true },
-      ], { allKeys: true });
-    });;
+      const meioMovimentacaoItems = await this.meioMovimentacao.toArray();
+
+      // Atualizar os dados existentes com a nova propriedade `teste`
+      await Promise.all(
+        meioMovimentacaoItems.map((item, index) => this.meioMovimentacao.update(item.id ?? 0, { ...item, parcelavel: index === 0 }))
+      );
+    });
 
     this.on('populate', () => this.populate());
   }
@@ -124,14 +120,14 @@ export class FinanceDB extends Dexie {
     ], { allKeys: true });
 
     await db.meioMovimentacao.bulkAdd([
-      { sigla: 'CC', title: 'Cartão de Crédito', entrada: false, parcelavel: true, teste: false },
-      { sigla: 'DB', title: 'Debito', entrada: false, parcelavel: false, teste: false },
-      { sigla: 'DI', title: 'Dinheiro', entrada: false, parcelavel: false, teste: false },
-      { sigla: 'DP', title: 'Depósito', entrada: true, parcelavel: false, teste: false },
-      { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true, parcelavel: false, teste: false },
-      { sigla: 'CH', title: 'Cheque', entrada: false, parcelavel: false, teste: false },
-      { sigla: 'SQ', title: 'Saque', entrada: false, parcelavel: false, teste: false },
-      { sigla: 'IV', title: 'Investimento', entrada: false, parcelavel: false, teste: true },
+      { sigla: 'CC', title: 'Cartão de Crédito', entrada: false, parcelavel: false },
+      { sigla: 'DB', title: 'Debito', entrada: false, parcelavel: false },
+      { sigla: 'DI', title: 'Dinheiro', entrada: false, parcelavel: false },
+      { sigla: 'DP', title: 'Depósito', entrada: true, parcelavel: false },
+      { sigla: 'RD', title: 'Recibo em dinheiro', entrada: true, parcelavel: false },
+      { sigla: 'CH', title: 'Cheque', entrada: false, parcelavel: false },
+      { sigla: 'SQ', title: 'Saque', entrada: false, parcelavel: false },
+      { sigla: 'IV', title: 'Investimento', entrada: false, parcelavel: false },
 
     ], { allKeys: true });
   }
