@@ -57,3 +57,8 @@ export interface ILancamentoAgrupado {
   grupoConta: GrupoContas,
   planosContas: PlanoContasLancamento[]
 }
+
+export interface VersionDB {
+  id?: number;
+  version: number | undefined;
+}
