@@ -19,7 +19,6 @@ import { ToastComponent } from './toast/toast.component';
 import { ConvertWithFunctionPipe } from '../pipes/convert-with-function.pipe';
 import { ConfiguracaoItemComponent } from '../pages/configuracao/configuracao-item/configuracao-item.component';
 import { ConfiguracaoComponent } from '../pages/configuracao/configuracao.component';
-import { ImportComponent } from './import/import.component';
 
 export const components = [
   HomeComponent,
@@ -32,8 +31,7 @@ export const components = [
   ToastComponent,
   ConvertWithFunctionPipe,
   ConfiguracaoComponent,
-  ConfiguracaoItemComponent,
-  ImportComponent,
+  ConfiguracaoItemComponent
 ]
 
 @NgModule({

@@ -2,12 +2,9 @@
     <mat-card class="mat-elevation-z0">
         <mat-card-title>
             <div class="header">
-                <div class="add-action">
-                    <button mat-raised-button color="primary" (click)="salvar()">
-                        {{ btnTexto }}
-                    </button>
-                    <fi-import (fileImported)="onFileImported($event)"></fi-import>
-                </div>
+                <button mat-raised-button color="primary" (click)="salvar()">
+                    {{ btnTexto }}
+                </button>
                 <small [ngClass]="{ 'no-display': data.lancamento }">
                     <mat-slide-toggle [(ngModel)]="multiAdd" color="primary">+ de 1</mat-slide-toggle>
                 </small>

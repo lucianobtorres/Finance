@@ -27,7 +27,6 @@
     "date-fns": "^2.29.3",
     "dexie": "^3.2.2",
     "ng2-currency-mask": "^13.0.3",
-    "pdfjs-dist": "^3.9.179",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

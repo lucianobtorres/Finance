@@ -128,29 +128,4 @@ export class AddLancamentoComponent implements OnInit, AfterViewInit, OnDestroy 
   cancelar() {
     this._bottomSheetRef.dismiss();
   }
-
-  onFileImported(file: File): void {
-    this.processFile(file);
-  }
-
-  processFile(file: File) {
-    const reader = new FileReader();
-
-    reader.onload = (event: any) => {
-      const csvData = event.target.result;
-      const lines = csvData.split('\n');
-
-      // Processar as linhas do arquivo CSV (faça a lógica de acordo com sua necessidade)
-      for (const line of lines) {
-        const fields = line.split(',');
-
-        // Exemplo: Adicionar despesa ao formulário
-        // this.expensesForm.patchValue({
-        //   // Defina os campos do formulário com os valores do CSV
-        // });
-      }
-    };
-
-    reader.readAsText(file);
-  }
 }
