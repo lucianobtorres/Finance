@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1720248297204,
+  "timestamp": 1720249390985,
   "index": "Finance/index.html",
   "assetGroups": [
     {
@@ -73,6 +73,7 @@
         "Finance/assets/icons/icon-512x512.png",
         "Finance/assets/icons/icon-72x72.png",
         "Finance/assets/icons/icon-96x96.png",
+        "Finance/assets/icons/icon.png",
         "Finance/assets/img/3d-clock-money.jpg",
         "Finance/assets/img/3d-monitor-money.jpg",
         "Finance/assets/img/3d-orcamento-categorizado.jpg",
@@ -131,6 +132,7 @@
     "Finance/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "Finance/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "Finance/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "Finance/assets/icons/icon.png": "397a6263faad60bc4bf0f30f70bc54bf2d332cbe",
     "Finance/assets/img/3d-clock-money.jpg": "c6d57c3cc8a18e5f0ae27cdd5f69306d8397c07d",
     "Finance/assets/img/3d-monitor-money.jpg": "6abd6d4698dfb3f10c1b604d409bb4140725010b",
     "Finance/assets/img/3d-orcamento-categorizado.jpg": "34240491a1f098c29a1c49384dc566372477d39a",
@@ -142,7 +144,7 @@
     "Finance/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.8fdb895cfe88be90.woff2": "b83aec9cceb453c24574d43f1ef4fde2a40eea65",
     "Finance/index.html": "df9b0dd7cbe06bc5be4bcd87fd12e46b32e01b55",
     "Finance/main.892445b97b0d2945.js": "eeb47a81f7c81e39aa9b9d70e264e82d46308548",
-    "Finance/manifest.webmanifest": "60237cc32d272ccbebb3f74285ac7e40755a1c3a",
+    "Finance/manifest.webmanifest": "0704fa4b2e8567af98f51e22a56031c3e815da7f",
     "Finance/polyfills.2149575af5dd0bd9.js": "6cddff5a65c46fa53cd8494f6515ceaeb6baa866",
     "Finance/runtime.4d56ae00ed276066.js": "2f93b8d7d1acbf0dcf88432bf9cee956e4b7c7fd",
     "Finance/styles.074ef873fd36bfde.css": "e96b776aff02433b95f540e3dfb7c06c925d4a15"
