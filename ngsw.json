@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1720249390985,
+  "timestamp": 1720249549431,
   "index": "Finance/index.html",
   "assetGroups": [
     {
@@ -144,7 +144,7 @@
     "Finance/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.8fdb895cfe88be90.woff2": "b83aec9cceb453c24574d43f1ef4fde2a40eea65",
     "Finance/index.html": "df9b0dd7cbe06bc5be4bcd87fd12e46b32e01b55",
     "Finance/main.892445b97b0d2945.js": "eeb47a81f7c81e39aa9b9d70e264e82d46308548",
-    "Finance/manifest.webmanifest": "0704fa4b2e8567af98f51e22a56031c3e815da7f",
+    "Finance/manifest.webmanifest": "5d2af8418a0f3d3ca4a8f8a553afc44b8be17c19",
     "Finance/polyfills.2149575af5dd0bd9.js": "6cddff5a65c46fa53cd8494f6515ceaeb6baa866",
     "Finance/runtime.4d56ae00ed276066.js": "2f93b8d7d1acbf0dcf88432bf9cee956e4b7c7fd",
     "Finance/styles.074ef873fd36bfde.css": "e96b776aff02433b95f540e3dfb7c06c925d4a15"
